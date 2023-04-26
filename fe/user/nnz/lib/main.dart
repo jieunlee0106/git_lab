@@ -11,6 +11,9 @@ import 'src/app.dart';
 import 'src/config/config.dart';
 
 void main() {
+  Get.config(
+    enableLog: true,
+  );
   runApp(const MyApp());
 }
 
@@ -24,11 +27,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Config.backgroundColor,
         appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Config.blackColor,
-            )),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Config.blackColor,
+          ),
+        ),
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
       ),

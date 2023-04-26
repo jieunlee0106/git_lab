@@ -33,7 +33,7 @@ class SharingRegister extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  SharingChoice(),
+                  const SharingChoice(),
                   const SizedBox(
                     height: 16,
                   ),
@@ -52,9 +52,9 @@ class SharingRegister extends StatelessWidget {
                   const Authentication(),
                   Obx(
                     () => controller.isAuthentication.value == true
-                        ? const Column(
+                        ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               ConditionContainer()

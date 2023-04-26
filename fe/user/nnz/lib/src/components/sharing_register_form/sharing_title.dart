@@ -48,8 +48,7 @@ class SharingTitle extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-              vertical: 12,
+              vertical: 16 ,
             ),
             child: TextField(
               controller: controller.titleController,

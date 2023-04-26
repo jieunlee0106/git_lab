@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+import 'package:nnz/src/controller/sharing_register_controller.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
 import '../../config/config.dart';
@@ -14,6 +16,8 @@ class PerformanceTime extends StatefulWidget {
 
 class _PerformanceTimeState extends State<PerformanceTime> {
   DateTime date = DateTime.now();
+  final controller = Get.put(SharingRegisterController());
+  final logger = Logger();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,12 +71,12 @@ class _PerformanceTimeState extends State<PerformanceTime> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    margin: EdgeInsets.only(
-                      left: Get.width * 0.34,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 16,
                     ),
-                    child: const Text(
-                      "yyyy-mm-dd",
-                      style: TextStyle(
+                    child: Text(
+                      controller.performDate.value,
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     )),
@@ -87,7 +91,13 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                       initialDate: DateTime.now(),
                       lastDate: DateTime(DateTime.now().year + 5),
                     );
-                    if (temp != null) setState(() => date = temp);
+                    if (temp != null) {
+                      setState(() {
+                        date = temp;
+                        final dateFormat = date.toString().substring(0, 10);
+                        controller.performDate(dateFormat);
+                      });
+                    }
                   },
                 ),
               ],

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+import 'package:nnz/src/controller/sharing_register_controller.dart';
 
 import '../../config/config.dart';
 import '../icon_data.dart';
 
 class ConditionContainer extends StatelessWidget {
-  const ConditionContainer({super.key});
-
+  ConditionContainer({super.key});
+  final controller = Get.put(SharingRegisterController());
+  final logger = Logger();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,43 +45,114 @@ class ConditionContainer extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(
-              bottom: 10,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Obx(
+            () => Column(
               children: [
                 Container(
-                  width: Get.width * 0.7,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      hintText: "조건을 입력해주세요",
-                    ),
+                  padding: const EdgeInsets.only(
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: Get.width * 0.7,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextField(
+                          controller: controller.conditionContrller,
+                          decoration: const InputDecoration(
+                            hintText: "조건을 입력해주세요",
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          controller
+                              .addCondition(controller.conditionContrller.text);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Config.yellowColor,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
+                            ),
+                            child: Text(
+                              "추가하기",
+                              style: TextStyle(color: Config.blackColor),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    print("조건 추가해줘");
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Config.yellowColor,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      child: Text(
-                        "추가하기",
-                        style: TextStyle(color: Config.blackColor),
-                      ),
-                    ),
-                  ),
-                )
+                controller.conList.isNotEmpty
+                    ? Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        child: Column(
+                          children: [
+                            for (var condition in controller.conList) ...[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(condition),
+                                    GestureDetector(
+                                        onTap: () {
+                                          controller.removeCondition(condition);
+                                        },
+                                        child: const Icon(
+                                            Icons.remove_circle_rounded)),
+                                  ],
+                                ),
+                              )
+                            ]
+                          ],
+                        ),
+                        // child: ListView.builder(
+                        //     physics: const NeverScrollableScrollPhysics(),
+                        //     itemCount: controller.conList.length,
+                        //     itemBuilder: (BuildContext context, int index) {
+                        //       return Container(
+                        //         padding: const EdgeInsets.symmetric(
+                        //           vertical: 4,
+                        //         ),
+                        //         child: Row(
+                        //           mainAxisAlignment:
+                        //               MainAxisAlignment.spaceBetween,
+                        //           children: [
+                        //             Text(
+                        //               controller.conList[index],
+                        //               style: const TextStyle(
+                        //                 fontSize: 16,
+                        //               ),
+                        //             ),
+                        //             GestureDetector(
+                        //               onTap: () {
+                        //                 controller.removeCondition(index);
+                        //                 logger.i(index);
+                        //               },
+                        //               child: const Icon(
+                        //                 Icons.remove_circle_outline,
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       );
+                        //     }),
+                      )
+                    : Container(),
               ],
             ),
           )

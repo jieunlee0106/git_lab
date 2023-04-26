@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/controller/sharing_register_controller.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
 import '../../config/config.dart';
@@ -13,6 +15,7 @@ class OpenTime extends StatefulWidget {
 }
 
 class _OpenTimeState extends State<OpenTime> {
+  final controller = Get.put(SharingRegisterController());
   final logger = Logger();
   TimeOfDay time = TimeOfDay.now();
   DateTime date = DateTime.now();
@@ -72,27 +75,21 @@ class _OpenTimeState extends State<OpenTime> {
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
+                      horizontal: 20,
                     ),
                     child: Row(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(
-                            left: 16,
-                          ),
-                          child: Text(
-                            "yyyy-mm-dd",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        Text(
+                          controller.openDate.value,
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
                         ),
                         MaterialButton(
                           minWidth: 60,
                           child: const Padding(
                             padding: EdgeInsets.only(
-                              left: 30,
+                              left: 32,
                             ),
                             child: Icon(
                               Icons.calendar_today,
@@ -105,7 +102,13 @@ class _OpenTimeState extends State<OpenTime> {
                               initialDate: DateTime.now(),
                               lastDate: DateTime(DateTime.now().year + 5),
                             );
-                            if (temp != null) setState(() => date = temp);
+                            if (temp != null) {
+                              setState(() {
+                                date = temp;
+                              });
+                            }
+                            final dateFormat = date.toString().substring(0, 10);
+                            controller.openDate(dateFormat);
                           },
                         ),
                       ],
@@ -124,26 +127,22 @@ class _OpenTimeState extends State<OpenTime> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
+                      horizontal: 16,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 12.0),
-                          child: Text(
-                            "hh:mm",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        Text(
+                          controller.openTime.value,
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
                         ),
                         MaterialButton(
-                          minWidth: 20,
+                          minWidth: 60,
                           child: const Padding(
                             padding: EdgeInsets.only(
-                              left: 4,
+                              left: 16,
                             ),
                             child: Icon(
                               Icons.timer,
@@ -158,8 +157,12 @@ class _OpenTimeState extends State<OpenTime> {
                               showMaterial: true,
                               height: 200,
                             );
-                            setState(() => time = temp!);
-                            logger.i(time);
+                            setState(() {
+                              time = temp!;
+                            });
+                            final timeFormat =
+                                time.toString().substring(10, 15);
+                            controller.openTime(timeFormat);
                           },
                         ),
                       ],

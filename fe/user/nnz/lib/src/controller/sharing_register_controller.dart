@@ -10,8 +10,20 @@ class SharingRegisterController extends GetxController {
   late final titleController;
   late final detailController;
   late final sharingController;
+  late final sportsController;
+  late final musicalController;
+  late final concertController;
+  late final esportsController;
+  late final theaterController;
+  late final movieController;
+  late final conditionContrller;
+  RxString performDate = "공연날짜 선택해주세요".obs;
+  RxString openDate = "yyyy-mm-dd".obs;
+  RxString openTime = "hh:mm".obs;
   List<ImageFile> imageList = [];
+  RxString testText = "".obs;
   RxBool isAuthentication = false.obs;
+  RxList<String> conList = RxList<String>();
   final logger = Logger();
   List<ImageFile> test = [];
   @override
@@ -24,6 +36,13 @@ class SharingRegisterController extends GetxController {
     titleController = TextEditingController();
     detailController = TextEditingController();
     sharingController = TextEditingController();
+    sportsController = TextEditingController();
+    musicalController = TextEditingController();
+    esportsController = TextEditingController();
+    concertController = TextEditingController();
+    theaterController = TextEditingController();
+    movieController = TextEditingController();
+    conditionContrller = TextEditingController();
   }
 
   void onShareRegister() {
@@ -37,9 +56,19 @@ class SharingRegisterController extends GetxController {
       imageList.add(image);
       logger.i("$image");
     }
-    // for (int i = 0; i < imageController.images.length; i++) {
-    //   final image
-    //   imageList.add(imag)
-    // }
+  }
+
+  void onChange(String text) {
+    sharingController.text = text;
+    logger.i(sharingController.text);
+  }
+
+  void addCondition(String condition) {
+    conList.add(condition);
+    logger.i(conList);
+  }
+
+  void removeCondition(String condition) {
+    conList.remove(condition);
   }
 }
