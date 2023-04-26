@@ -14,37 +14,32 @@ class HashTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
-        vertical: 8,
+        vertical: 16,
       ),
       color: Colors.white,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                iconData(
-                  icon: ImagePath.hashTag,
-                  size: 80,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              iconData(
+                icon: ImagePath.hashTag,
+                size: 80,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 4),
+              ),
+              const Text(
+                "태그",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
                 ),
-                const SizedBox(
-                  width: 12,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 4),
-                ),
-                const Text(
-                  "태그",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           Container(
             padding: const EdgeInsets.only(
