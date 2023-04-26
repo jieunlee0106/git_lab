@@ -6,6 +6,7 @@ import 'package:nnz/src/pages/user/find_password.dart';
 import 'package:nnz/src/pages/user/login.dart';
 import 'package:nnz/src/pages/user/register.dart';
 import 'package:nnz/src/pages/user/register_form.dart';
+import 'package:nnz/src/pages/home/home.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
@@ -34,11 +35,15 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/",
+      initialRoute: "/home",
       getPages: [
         GetPage(
           name: "/",
           page: () => const App(),
+        ),
+        GetPage(
+          name: "/home",
+          page: () => Home(),
         ),
         GetPage(
           name: "/register",
