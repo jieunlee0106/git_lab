@@ -101,7 +101,7 @@ class SharingDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "상세 정보",
+                      "상세 정보중",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
