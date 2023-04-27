@@ -18,6 +18,7 @@ import 'package:nnz/src/pages/category/musical.dart';
 import 'package:nnz/src/pages/category/sports.dart';
 import 'package:nnz/src/pages/category/esports.dart';
 import 'package:nnz/src/pages/category/stage.dart';
+import 'package:nnz/src/pages/user/mypage.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -27,17 +28,18 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-<<<<<<< HEAD
-          iconTheme: const IconThemeData(color: Colors.black),
-          leading: const Icon(Icons.account_circle),
-          title: Center(child: Image.asset('assets/logo.png', width: 80)),
-          actions: const [Icon(Icons.notifications)],
-=======
           iconTheme: IconThemeData(color: Colors.black),
-          leading: Icon(Icons.account_circle),
+          leading: IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyPage()),
+              );
+            },
+          ),
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
           actions: [Icon(Icons.notifications)],
->>>>>>> home
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -80,20 +82,6 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       HomeCategory(
-<<<<<<< HEAD
-                          page: const ConcertPage(),
-                          image: 'assets/concert.png',
-                          categoryName: '콘서트',
-                          num: 1),
-                      HomeCategory(
-                          page: const musicalPage(),
-                          image: 'assets/musical.png',
-                          categoryName: '뮤지컬',
-                          num: 1),
-                      HomeCategory(
-                        page: const stagePage(),
-                        image: 'assets/stage.png',
-=======
                           page: ConcertPage(),
                           image: ImagePath.concert,
                           categoryName: '콘서트',
@@ -106,31 +94,16 @@ class Home extends StatelessWidget {
                       HomeCategory(
                         page: stagePage(),
                         image: ImagePath.stage,
->>>>>>> home
                         categoryName: '연극',
                         num: 1,
                       ),
                       HomeCategory(
-<<<<<<< HEAD
-                        page: const moviePage(),
-                        image: 'assets/movie.png',
-=======
                         page: moviePage(),
                         image: ImagePath.movie,
->>>>>>> home
                         categoryName: '영화',
                         num: 1,
                       ),
                       HomeCategory(
-<<<<<<< HEAD
-                          page: const sportsPage(),
-                          image: 'assets/sports.png',
-                          categoryName: '스포츠',
-                          num: 1),
-                      HomeCategory(
-                          page: const esportsPage(),
-                          image: 'assets/esports.png',
-=======
                           page: sportsPage(),
                           image: ImagePath.sports,
                           categoryName: '스포츠',
@@ -138,7 +111,6 @@ class Home extends StatelessWidget {
                       HomeCategory(
                           page: esportsPage(),
                           image: ImagePath.esports,
->>>>>>> home
                           categoryName: 'e스포츠',
                           num: 1),
                     ],
