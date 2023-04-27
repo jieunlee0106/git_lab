@@ -36,8 +36,8 @@ class HomeCategory extends StatelessWidget {
                     children: [
                       Image(
                         image: AssetImage(image),
-                        width: 30,
-                        height: 30,
+                        width: 35,
+                        height: 35,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(2),

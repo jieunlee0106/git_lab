@@ -40,6 +40,7 @@ class HashTag extends StatelessWidget {
                       "#해시태그$index",
                       style: TextStyle(
                         color: Config.blackColor,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

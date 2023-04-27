@@ -7,7 +7,7 @@ class esportsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("e스포츠 페이지"),
+        child: Text(" 페이지"),
       ),
     );
   }

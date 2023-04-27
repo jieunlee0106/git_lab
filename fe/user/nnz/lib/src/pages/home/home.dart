@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
-import 'package:nnz/src/components/banner_form/home_banner.dart';
+import 'package:nnz/src/components/home_page_form/home_banner.dart';
 import 'package:nnz/src/components/home_page_form/category_form.dart';
 import 'package:nnz/src/components/home_page_form/hash_tag.dart';
 import 'package:nnz/src/components/gray_line_form/gray_line.dart';
 import 'package:nnz/src/components/home_page_form/share_text.dart';
+import 'package:nnz/src/components/home_page_form/home_share_list.dart';
 import 'package:nnz/src/config/config.dart';
 
 import 'package:nnz/src/pages/category/concert.dart';
@@ -130,7 +131,9 @@ class Home extends StatelessWidget {
                 HomeShareText(
                     text: '즉시 줄서기 가능한 나눔',
                     image: 'assets/movie.png',
-                    smallText: '근처에서 진행중인 나눔에 줄서기를 해보세요')
+                    smallText: '근처에서 진행중인 나눔에 줄서기를 해보세요'),
+                MyHomePage(),
+                MyHomePage()
                 // Add other widgets here...
               ],
             ),
