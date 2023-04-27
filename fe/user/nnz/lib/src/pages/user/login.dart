@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/components/icon_data.dart';
 
 import '../../config/config.dart';
 import '../../controller/login_controller.dart';
@@ -45,7 +45,10 @@ class Login extends StatelessWidget {
                           const SizedBox(
                             height: 16,
                           ),
-                          SvgPicture.asset("assets/images/logo.svg"),
+                          iconData(
+                            icon: ImagePath.logo,
+                            size: 880,
+                          ),
                           const SizedBox(
                             height: 80,
                           ),

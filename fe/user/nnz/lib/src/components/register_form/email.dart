@@ -31,13 +31,6 @@ class Email extends GetView<RegisterController> {
             type: TextInputType.emailAddress,
             formType: 'email',
             hintText: "예 : naneozoo@email.com",
-            // validation: (value) {
-            //   print("나오라고 $value");
-            //   if (value == null || value.isEmpty) {
-            //     return '이메일을 입력하세요';
-            //   }
-            //   return "";
-            // },
           ),
         )
       ],

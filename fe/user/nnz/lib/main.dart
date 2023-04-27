@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/sharingDetail",
+      initialRoute: "/",
       getPages: [
         GetPage(
           name: "/",
@@ -65,12 +65,12 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/findPassword",
-          page: () => const FindPassword(),
+          page: () => FindPassword(),
           transition: Transition.native,
         ),
         GetPage(
           name: "/termsOfUse",
-          page: () => const FindPassword(),
+          page: () => FindPassword(),
           transition: Transition.rightToLeft,
         ),
         GetPage(

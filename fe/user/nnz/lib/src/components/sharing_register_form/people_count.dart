@@ -54,35 +54,6 @@ class PeopleCount extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      controller.onIncrease();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Config.blackColor,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Text(
-                        "+",
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "${controller.peopleCount.value}",
-                    style: const TextStyle(
-                      fontSize: 24,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
                       if (controller.peopleCount.value > 0) {
                         controller.onDecrease();
                       }
@@ -100,6 +71,35 @@ class PeopleCount extends StatelessWidget {
                       ),
                       child: const Text(
                         "-",
+                        style: TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "${controller.peopleCount.value}",
+                    style: const TextStyle(
+                      fontSize: 24,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      controller.onIncrease();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Config.blackColor,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Text(
+                        "+",
                         style: TextStyle(
                           fontSize: 24,
                         ),

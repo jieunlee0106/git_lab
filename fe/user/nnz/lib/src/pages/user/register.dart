@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
@@ -48,10 +47,11 @@ class _RegisterState extends State<Register> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 16.0,
-                  ),
-                  child: SvgPicture.asset("assets/images/logo.svg")),
+                child: iconData(
+                  icon: ImagePath.logo,
+                  size: 880,
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -69,19 +69,22 @@ class _RegisterState extends State<Register> {
                         vertical: 8.0,
                       ),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           iconData(
                             icon: ImagePath.twitter,
-                            size: 100,
+                            size: 80,
                           ),
-                          SizedBox(
-                            width: Get.width * 0.17,
-                          ),
-                          const Text(
-                            "트위터로 시작하기",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Get.width * 0.2,
+                            ),
+                            child: const Text(
+                              "트위터로 시작하기",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ],
@@ -104,22 +107,25 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
+                        horizontal: 13.0,
                         vertical: 8.0,
                       ),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           iconData(
                             icon: ImagePath.id,
                             size: 80,
                           ),
-                          SizedBox(
-                            width: Get.width * 0.18,
-                          ),
-                          const Text(
-                            "아이디로 시작하기",
-                            style: TextStyle(
-                              fontSize: 20,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Get.width * 0.2,
+                            ),
+                            child: const Text(
+                              "아이디로 시작하기",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ],

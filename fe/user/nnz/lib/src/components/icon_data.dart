@@ -48,4 +48,5 @@ class ImagePath {
   static String get title => 'assets/images/sharing_register/title.png';
   static String get hashTag => 'assets/images/sharing_register/hash_tag.png';
   static String get condition => 'assets/images/sharing_register/condition.png';
+  static String get logo => 'assets/logo.png';
 }

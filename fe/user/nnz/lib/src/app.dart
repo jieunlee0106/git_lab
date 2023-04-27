@@ -19,11 +19,7 @@ class App extends GetView<BottomNavController> {
               index: controller.navIndex.value,
               children: [
                 //home
-                Center(
-                  child: Container(
-                    child: const Text("Home Page"),
-                  ),
-                ),
+                const Home(),
                 //search
                 Center(
                   child: Container(
