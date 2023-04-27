@@ -6,11 +6,8 @@ import 'package:nnz/src/pages/user/find_password.dart';
 import 'package:nnz/src/pages/user/login.dart';
 import 'package:nnz/src/pages/user/register.dart';
 import 'package:nnz/src/pages/user/register_form.dart';
-<<<<<<< HEAD
-=======
 import 'package:nnz/src/pages/home/home.dart';
-
->>>>>>> jieun
+import 'package:nnz/src/pages/share/sharing_detail.dart';
 import 'src/app.dart';
 import 'src/config/config.dart';
 
@@ -42,7 +39,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/home",
+      initialRoute: "/sharingDetail",
       getPages: [
         GetPage(
           name: "/",
@@ -50,7 +47,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/home",
-          page: () => Home(),
+          page: () => const Home(),
         ),
         GetPage(
           name: "/register",
@@ -80,7 +77,11 @@ class MyApp extends StatelessWidget {
           name: "/sharingRegister",
           page: () => SharingRegister(),
           transition: Transition.native,
-        )
+        ),
+        GetPage(
+            name: "/sharingDetail",
+            page: () => const SharingDetail(),
+            transition: Transition.rightToLeft),
       ],
     );
   }
