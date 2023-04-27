@@ -18,6 +18,7 @@ import 'package:nnz/src/pages/category/musical.dart';
 import 'package:nnz/src/pages/category/sports.dart';
 import 'package:nnz/src/pages/category/esports.dart';
 import 'package:nnz/src/pages/category/stage.dart';
+import 'package:nnz/src/pages/user/mypage.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -27,10 +28,18 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Colors.black),
-          leading: const Icon(Icons.account_circle),
+          iconTheme: IconThemeData(color: Colors.black),
+          leading: IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyPage()),
+              );
+            },
+          ),
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
-          actions: const [Icon(Icons.notifications)],
+          actions: [Icon(Icons.notifications)],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -73,7 +82,7 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       HomeCategory(
-                          page: const ConcertPage(),
+                          page: ConcertPage(),
                           image: ImagePath.concert,
                           categoryName: '콘서트',
                           num: 1),
@@ -89,13 +98,13 @@ class Home extends StatelessWidget {
                         num: 1,
                       ),
                       HomeCategory(
-                        page: const moviePage(),
+                        page: moviePage(),
                         image: ImagePath.movie,
                         categoryName: '영화',
                         num: 1,
                       ),
                       HomeCategory(
-                          page: const sportsPage(),
+                          page: sportsPage(),
                           image: ImagePath.sports,
                           categoryName: '스포츠',
                           num: 1),

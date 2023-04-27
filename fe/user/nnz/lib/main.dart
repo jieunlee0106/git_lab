@@ -6,6 +6,7 @@ import 'package:nnz/src/pages/user/find_password.dart';
 import 'package:nnz/src/pages/user/login.dart';
 import 'package:nnz/src/pages/user/register.dart';
 import 'package:nnz/src/pages/user/register_form.dart';
+import 'package:nnz/src/pages/user/mypage.dart';
 import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/share/sharing_detail.dart';
 import 'src/app.dart';
@@ -82,6 +83,10 @@ class MyApp extends StatelessWidget {
             name: "/sharingDetail",
             page: () => const SharingDetail(),
             transition: Transition.rightToLeft),
+        GetPage(
+          name: "/myPage",
+          page: () => const MyPage(),
+        ),
       ],
     );
   }
