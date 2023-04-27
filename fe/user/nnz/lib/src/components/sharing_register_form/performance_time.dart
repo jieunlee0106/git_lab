@@ -71,15 +71,24 @@ class _PerformanceTimeState extends State<PerformanceTime> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  width: Get.width * 0.6,
+                  child: TextField(
+                    controller: controller.performController,
+                    decoration: const InputDecoration(
+                      hintText: "공연날짜를 선택해주세요",
+                      border: InputBorder.none,
                     ),
-                    child: Text(
-                      controller.performDate.value,
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
-                    )),
+                  ),
+                  // Text(
+                  //   controller.performDate.value,
+                  //   style: const TextStyle(
+                  //     fontSize: 16,
+                  //   ),
+                  // ),
+                ),
                 MaterialButton(
                   child: const Icon(
                     Icons.calendar_today,
@@ -95,7 +104,7 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                       setState(() {
                         date = temp;
                         final dateFormat = date.toString().substring(0, 10);
-                        controller.performDate(dateFormat);
+                        controller.performController.text = dateFormat;
                       });
                     }
                   },

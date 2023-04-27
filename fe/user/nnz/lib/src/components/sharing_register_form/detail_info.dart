@@ -17,39 +17,34 @@ class DetailInfo extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                iconData(
-                  icon: ImagePath.detailInfo,
-                  size: 80,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              iconData(
+                icon: ImagePath.detailInfo,
+                size: 80,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  bottom: 4,
                 ),
-                const SizedBox(
-                  width: 12,
+                child: Text(
+                  "상세정보",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 4,
-                  ),
-                  child: Text(
-                    "상세정보",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-              vertical: 12,
+              horizontal: 8,
+              // vertical: 18,
             ),
             child: TextField(
               controller: controller.detailController,
@@ -61,6 +56,9 @@ class DetailInfo extends StatelessWidget {
                 alignLabelWithHint: true,
               ),
             ),
+          ),
+          const SizedBox(
+            height: 16,
           )
         ],
       ),

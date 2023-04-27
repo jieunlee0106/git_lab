@@ -59,7 +59,7 @@ class ConditionContainer extends StatelessWidget {
                         width: Get.width * 0.7,
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextField(
-                          controller: controller.conditionContrller,
+                          controller: controller.conditionController,
                           decoration: const InputDecoration(
                             hintText: "조건을 입력해주세요",
                           ),
@@ -67,8 +67,8 @@ class ConditionContainer extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          controller
-                              .addCondition(controller.conditionContrller.text);
+                          controller.addCondition(
+                              controller.conditionController.text);
                         },
                         child: Container(
                           decoration: BoxDecoration(

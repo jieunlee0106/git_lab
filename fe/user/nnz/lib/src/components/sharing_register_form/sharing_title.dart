@@ -17,38 +17,33 @@ class SharingTitle extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                iconData(
-                  icon: ImagePath.title,
-                  size: 80,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              iconData(
+                icon: ImagePath.title,
+                size: 80,
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                  bottom: 4,
                 ),
-                const SizedBox(
-                  width: 12,
+                child: Text(
+                  "제목",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 4,
-                  ),
-                  child: Text(
-                    "제목",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 16 ,
+              horizontal: 8,
             ),
             child: TextField(
               controller: controller.titleController,
@@ -60,6 +55,9 @@ class SharingTitle extends StatelessWidget {
                 alignLabelWithHint: true,
               ),
             ),
+          ),
+          const SizedBox(
+            height: 16,
           )
         ],
       ),

@@ -65,7 +65,7 @@ class SharingRegister extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  const PeopleCount(),
+                  PeopleCount(),
                   const SizedBox(
                     height: 16,
                   ),
