@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:nnz/src/components/home_page_form/home_banner.dart';
 import 'package:nnz/src/components/home_page_form/category_form.dart';
 import 'package:nnz/src/components/home_page_form/hash_tag.dart';
@@ -25,14 +25,14 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
-          leading: Icon(Icons.account_circle),
+          iconTheme: const IconThemeData(color: Colors.black),
+          leading: const Icon(Icons.account_circle),
           title: Center(child: Image.asset('assets/logo.png', width: 80)),
-          actions: [Icon(Icons.notifications)],
+          actions: const [Icon(Icons.notifications)],
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Column(
               children: [
                 CarouselSlider(
@@ -43,7 +43,8 @@ class Home extends StatelessWidget {
                     aspectRatio: 16 / 9,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
                     viewportFraction: 0.8,
                   ),
                   items: [
@@ -61,7 +62,7 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -70,34 +71,34 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       HomeCategory(
-                          page: ConcertPage(),
+                          page: const ConcertPage(),
                           image: 'assets/concert.png',
                           categoryName: '콘서트',
                           num: 1),
                       HomeCategory(
-                          page: musicalPage(),
+                          page: const musicalPage(),
                           image: 'assets/musical.png',
                           categoryName: '뮤지컬',
                           num: 1),
                       HomeCategory(
-                        page: stagePage(),
+                        page: const stagePage(),
                         image: 'assets/stage.png',
                         categoryName: '연극',
                         num: 1,
                       ),
                       HomeCategory(
-                        page: moviePage(),
+                        page: const moviePage(),
                         image: 'assets/movie.png',
                         categoryName: '영화',
                         num: 1,
                       ),
                       HomeCategory(
-                          page: sportsPage(),
+                          page: const sportsPage(),
                           image: 'assets/sports.png',
                           categoryName: '스포츠',
                           num: 1),
                       HomeCategory(
-                          page: esportsPage(),
+                          page: const esportsPage(),
                           image: 'assets/esports.png',
                           categoryName: 'e스포츠',
                           num: 1),
@@ -109,7 +110,7 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 15,
                       ),
@@ -125,8 +126,8 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
-                HashTag(),
-                SizedBox(height: 10),
+                const HashTag(),
+                const SizedBox(height: 10),
                 GrayLine(),
                 HomeShareText(
                     text: '즉시 줄서기 가능한 나눔',
