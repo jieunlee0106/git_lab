@@ -48,5 +48,17 @@ class ImagePath {
   static String get title => 'assets/images/sharing_register/title.png';
   static String get hashTag => 'assets/images/sharing_register/hash_tag.png';
   static String get condition => 'assets/images/sharing_register/condition.png';
-  static String get logo => 'assets/logo.png';
+
+  static String get musical => 'assets/images/home/musical.png';
+  static String get concert => 'assets/images/home/concert.png';
+  static String get sports => 'assets/images/home/sports.png';
+  static String get esports => 'assets/images/home/esports.png';
+  static String get movie => 'assets/images/home/movie.png';
+  static String get stage => 'assets/images/home/stage.png';
+  static String get banner1 => 'assets/images/home/banner1.png';
+  static String get banner2 => 'assets/images/home/banner2.png';
+  static String get banner3 => 'assets/images/home/banner3.png';
+  static String get fire => 'assets/images/home/fire.png';
+  static String get pin => 'assets/images/home/pin.png';
+  static String get logo => 'assets/images/home/logo.png';
 }

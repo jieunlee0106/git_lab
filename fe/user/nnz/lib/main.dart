@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
       initialRoute: "/",
+      initialRoute: "/home",
       getPages: [
         GetPage(
           name: "/",
