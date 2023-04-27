@@ -9,4 +9,5 @@ class Config {
   static Color greyColor = const Color(0xffCFD4DA);
   static Color hintTextColor = const Color(0xffB8B8B8);
   static Color yellowColor = const Color(0xffFFE277);
+  static Color rigthYellowColor = const Color(0xffFFF7CE);
 }

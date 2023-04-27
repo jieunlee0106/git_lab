@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/user/register.dart';
 
 import 'components/icon_data.dart';
