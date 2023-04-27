@@ -27,17 +27,10 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-<<<<<<< HEAD
           iconTheme: const IconThemeData(color: Colors.black),
           leading: const Icon(Icons.account_circle),
-          title: Center(child: Image.asset('assets/logo.png', width: 80)),
-          actions: const [Icon(Icons.notifications)],
-=======
-          iconTheme: IconThemeData(color: Colors.black),
-          leading: Icon(Icons.account_circle),
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
-          actions: [Icon(Icons.notifications)],
->>>>>>> home
+          actions: const [Icon(Icons.notifications)],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -80,65 +73,35 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       HomeCategory(
-<<<<<<< HEAD
                           page: const ConcertPage(),
-                          image: 'assets/concert.png',
-                          categoryName: '콘서트',
-                          num: 1),
-                      HomeCategory(
-                          page: const musicalPage(),
-                          image: 'assets/musical.png',
-                          categoryName: '뮤지컬',
-                          num: 1),
-                      HomeCategory(
-                        page: const stagePage(),
-                        image: 'assets/stage.png',
-=======
-                          page: ConcertPage(),
                           image: ImagePath.concert,
                           categoryName: '콘서트',
                           num: 1),
                       HomeCategory(
-                          page: musicalPage(),
+                          page: const musicalPage(),
                           image: ImagePath.musical,
                           categoryName: '뮤지컬',
                           num: 1),
                       HomeCategory(
-                        page: stagePage(),
+                        page: const stagePage(),
                         image: ImagePath.stage,
->>>>>>> home
                         categoryName: '연극',
                         num: 1,
                       ),
                       HomeCategory(
-<<<<<<< HEAD
                         page: const moviePage(),
-                        image: 'assets/movie.png',
-=======
-                        page: moviePage(),
                         image: ImagePath.movie,
->>>>>>> home
                         categoryName: '영화',
                         num: 1,
                       ),
                       HomeCategory(
-<<<<<<< HEAD
                           page: const sportsPage(),
-                          image: 'assets/sports.png',
-                          categoryName: '스포츠',
-                          num: 1),
-                      HomeCategory(
-                          page: const esportsPage(),
-                          image: 'assets/esports.png',
-=======
-                          page: sportsPage(),
                           image: ImagePath.sports,
                           categoryName: '스포츠',
                           num: 1),
                       HomeCategory(
-                          page: esportsPage(),
+                          page: const esportsPage(),
                           image: ImagePath.esports,
->>>>>>> home
                           categoryName: 'e스포츠',
                           num: 1),
                     ],
