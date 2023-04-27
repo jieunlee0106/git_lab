@@ -133,7 +133,7 @@ class Home extends StatelessWidget {
                     image: 'assets/movie.png',
                     smallText: '근처에서 진행중인 나눔에 줄서기를 해보세요'),
 
-                MyHomePage()
+                // MyHomePage()
                 // Add other widgets here...
               ],
             ),
