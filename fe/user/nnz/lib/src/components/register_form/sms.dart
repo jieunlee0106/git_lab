@@ -42,6 +42,7 @@ class Sms extends StatelessWidget {
                           controller.smsController.text.length == 11
                               ? true
                               : false;
+                      logger.i(controller.phoneChecked.value);
                     },
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
@@ -63,7 +64,8 @@ class Sms extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (controller.phoneChecked.value) {
+                    if (controller.phoneChecked.value &&
+                        controller.testBool.value == false) {
                       controller.onSms();
                     }
                   },
@@ -77,9 +79,11 @@ class Sms extends StatelessWidget {
                             14,
                           ),
                     decoration: BoxDecoration(
-                      color: controller.phoneChecked.value
-                          ? Config.yellowColor
-                          : Config.greyColor,
+                      color: controller.testBool.value == true
+                          ? Config.greyColor
+                          : controller.phoneChecked.value
+                              ? Config.yellowColor
+                              : Config.greyColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: controller.testBool.value

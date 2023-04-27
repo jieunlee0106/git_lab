@@ -120,13 +120,6 @@ class RegisterController extends GetxController {
     }
   }
 
-  String testVaildate(String email) {
-    if (email.isEmpty || email.isEmpty) {
-      return "입력해줘";
-    }
-    return "";
-  }
-
   void onTimer() {
     isTimerChecked = false;
     if (authNumberController.text.length >= 6) {
