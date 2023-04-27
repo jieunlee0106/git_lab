@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/sharingDetail",
+      initialRoute: "/home",
       getPages: [
         GetPage(
           name: "/",
