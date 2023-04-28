@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
             name: "/sharingDetail",
-            page: () => const SharingDetail(),
+            page: () => SharingDetail(),
             transition: Transition.rightToLeft),
         GetPage(
           name: "/myPage",
