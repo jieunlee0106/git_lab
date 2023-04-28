@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/register",
-          page: () => const Register(),
+          page: () => Register(),
         ),
         GetPage(
           name: "/registerForm",

@@ -41,7 +41,7 @@ class App extends GetView<BottomNavController> {
                 //mypage
                 Center(
                   child: Container(
-                    child: const Register(),
+                    child: Register(),
                   ),
                 ),
               ],

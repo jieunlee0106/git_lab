@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:twitter_login/twitter_login.dart';
+import 'package:nnz/src/controller/twitter_controller.dart';
 
 import '../../components/icon_data.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class Register extends StatelessWidget {
+  Register({super.key});
 
-  @override
-  State<Register> createState() => _RegisterState();
-}
-
-class _RegisterState extends State<Register> {
-  var logger = Logger();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  final logger = Logger();
+  final controller = Get.put(TwitterController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,19 +47,7 @@ class _RegisterState extends State<Register> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () async {
-                      {
-                        final TwitterLogin twitterLogin = TwitterLogin(
-                          apiKey: 'Py5cGhPQyRt1kzrvQzmGuu9Ox',
-                          apiSecretKey:
-                              'MLraP08zkwSc2G3ToamG5E9qmKj1oksHPXnOqLxOlTIp5sDn0V',
-                          redirectURI: 'twittercallback://',
-                        );
-
-                        var response = await twitterLogin.login();
-                        logger.i(response.errorMessage);
-                      }
-                    },
+                    onTap: controller.twitter,
                     child: Container(
                       decoration: BoxDecoration(
                         color: const Color(0xff2c96d4),
