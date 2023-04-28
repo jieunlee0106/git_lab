@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/services/user_provider.dart';
 
 class LoginController extends GetxController {
   static LoginController get to => Get.find();
@@ -41,7 +42,6 @@ class LoginController extends GetxController {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            title: const Text("알림"),
             content: const Text("올바른 이메일 형식으로 입력해주세요"),
             actions: [
               TextButton(
@@ -56,6 +56,9 @@ class LoginController extends GetxController {
       );
     } else {
       logger.i("로그인진행하겠습니다.");
+      final response = UserProvider().postLogin(
+          email: emailController.text, password: passwordController.text);
+      logger.i(response);
     }
   }
 

@@ -5,7 +5,6 @@ import 'package:nnz/src/components/icon_data.dart';
 
 import '../../config/config.dart';
 import '../../controller/login_controller.dart';
-import 'package:twitter_login/twitter_login.dart';
 
 class Login extends StatelessWidget {
   final controller = Get.put(LoginController());
