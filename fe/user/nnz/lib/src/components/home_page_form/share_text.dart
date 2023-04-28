@@ -7,7 +7,7 @@ class HomeShareText extends StatelessWidget {
   final String image;
   final String smallText;
 
-  HomeShareText({
+  const HomeShareText({
     super.key,
     required this.text,
     required this.image,
@@ -35,7 +35,7 @@ class HomeShareText extends StatelessWidget {
                     width: 35,
                     height: 35,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(
@@ -49,7 +49,7 @@ class HomeShareText extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(smallText)
