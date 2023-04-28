@@ -4,11 +4,15 @@ import 'package:nnz/src/bindings/init_bindings.dart';
 import 'package:nnz/src/pages/share/sharing_register.dart';
 import 'package:nnz/src/pages/user/find_password.dart';
 import 'package:nnz/src/pages/user/login.dart';
+import 'package:nnz/src/pages/user/profile_edit.dart';
 import 'package:nnz/src/pages/user/register.dart';
 import 'package:nnz/src/pages/user/register_form.dart';
 import 'package:nnz/src/pages/user/mypage.dart';
 import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/share/sharing_detail.dart';
+import 'package:nnz/src/pages/share/my_shared_list.dart';
+import 'package:nnz/src/pages/share/my_sharing_list.dart';
+
 import 'src/app.dart';
 import 'src/config/config.dart';
 
@@ -86,6 +90,18 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/myPage",
           page: () => const MyPage(),
+        ),
+        GetPage(
+          name: "/mysharedList",
+          page: () => const MySharedList(),
+        ),
+        GetPage(
+          name: "/mysharingList",
+          page: () => const MySharingList(),
+        ),
+        GetPage(
+          name: "/profileEdit",
+          page: () => const ProfileEdit(),
         ),
       ],
     );

@@ -132,22 +132,3 @@ class HomeShareList extends StatelessWidget {
     );
   }
 }
-
-                          // Text(
-                          //   item['title']!,
-                          //   style: TextStyle(
-
-                          //   ),
-                          // ),
-                          // Text(
-                          //   item['subtitle']!,
-                          //   style: TextStyle(
-
-                          //   ),
-                          // ),
-                          // Text(
-                          //   item['location']!,
-                          //   style: TextStyle(
-
-                          //   ),
-                          // ),
