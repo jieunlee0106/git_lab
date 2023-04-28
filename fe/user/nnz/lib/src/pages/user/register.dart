@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 import '../../components/icon_data.dart';
 
@@ -56,8 +57,18 @@ class _RegisterState extends State<Register> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      print("트위터로그인하기");
+                    onTap: () async {
+                      {
+                        final TwitterLogin twitterLogin = TwitterLogin(
+                          apiKey: 'Py5cGhPQyRt1kzrvQzmGuu9Ox',
+                          apiSecretKey:
+                              'MLraP08zkwSc2G3ToamG5E9qmKj1oksHPXnOqLxOlTIp5sDn0V',
+                          redirectURI: 'twittercallback://',
+                        );
+
+                        var response = await twitterLogin.login();
+                        logger.i(response.errorMessage);
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
