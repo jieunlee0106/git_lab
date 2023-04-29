@@ -33,7 +33,7 @@ class Sms extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
-                    readOnly: controller.testBool.value ? true : false,
+                    readOnly: controller.smsChecked.value ? true : false,
                     controller: controller.smsController,
                     onChanged: (value) {
                       controller.onChangeFiled(
@@ -65,7 +65,7 @@ class Sms extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     if (controller.phoneChecked.value &&
-                        controller.testBool.value == false) {
+                        controller.smsChecked.value == false) {
                       controller.onSms();
                     }
                   },
@@ -79,14 +79,14 @@ class Sms extends StatelessWidget {
                             14,
                           ),
                     decoration: BoxDecoration(
-                      color: controller.testBool.value == true
+                      color: controller.smsChecked.value == true
                           ? Config.greyColor
                           : controller.phoneChecked.value
                               ? Config.yellowColor
                               : Config.greyColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: controller.testBool.value
+                    child: controller.smsChecked.value
                         ? const Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: 6,
@@ -112,7 +112,7 @@ class Sms extends StatelessWidget {
               ],
             ),
           ),
-          controller.testBool.value
+          controller.smsChecked.value
               ? Container()
               : controller.requestSms.value
                   ? Obx(

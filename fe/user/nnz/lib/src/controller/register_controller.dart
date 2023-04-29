@@ -3,22 +3,32 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/services/user_provider.dart';
 
 class RegisterController extends GetxController {
   late final GlobalKey formKey;
   final logger = Logger();
-  final RxBool isAgree = false.obs;
   RxString timeCount = "".obs;
   int count = 10;
   final RxInt totalCount = 120.obs;
   late Timer timer;
-  RxBool testBool = false.obs;
   RxBool nicknameChecked = false.obs;
   RxBool phoneChecked = false.obs;
   RxBool requestSms = false.obs;
   RxBool requestAgainSms = false.obs;
   RxBool isAuthChecked = false.obs;
+
   bool isTimerChecked = false;
+
+  //회원 유효성 검사 완료 후 회원가입 버튼은 활성화 하기 위해
+  RxBool emailChecked = false.obs;
+  RxBool pwdChecked = false.obs;
+  RxBool pwdConfirmChecked = false.obs;
+  RxBool nickChecked = false.obs;
+  RxBool smsChecked = false.obs;
+  RxBool isAgree = false.obs;
+  RxBool registerChecked = false.obs;
+
   RxString test = "".obs;
   int seconds = 120; // seconds 변수 추가
 
@@ -28,6 +38,7 @@ class RegisterController extends GetxController {
   late final nicknameController;
   late final smsController;
   late final authNumberController;
+
   @override
   void onInit() {
     super.onInit();
@@ -63,10 +74,31 @@ class RegisterController extends GetxController {
         offset: text.length,
       ),
     );
-    if (controller == emailController) {
-      test(text);
+    if (controller == passwordConfirmController) {
+      logger.i("자 확인들어갑니다. $pwdConfirmChecked");
+      onRegisterCheck();
     }
-    logger.i(text);
+  }
+
+  void onRegisterCheck() {
+    logger.i("비밀번호 체크 ${pwdChecked.value}");
+    registerChecked.value = emailChecked.value &&
+            pwdChecked.value &&
+            pwdConfirmChecked.value &&
+            nickChecked.value &&
+            smsChecked.value &&
+            isAgree.value
+        ? true
+        : false;
+  }
+
+  void emailValidate() {
+    UserProvider().testApi(email: emailController.text);
+
+    //이메일 유효성 검사 통과시
+    emailChecked(true);
+    logger.i("이메일 통과됐나요? ${emailChecked.value}");
+    // UserProvider().getValidateEmail(email: emailController.text);
   }
 
   void onSms() {
@@ -97,6 +129,13 @@ class RegisterController extends GetxController {
     return true;
   }
 
+  void onNicknameValidate({required String nickname}) {
+    // logger.i(nickname);
+    nickChecked(true);
+    onRegisterCheck();
+    logger.i(registerChecked.value);
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return '$duration'.substring(2, 7);
@@ -114,7 +153,8 @@ class RegisterController extends GetxController {
   }
 
   void onTest() {
-    testBool(true);
+    smsChecked(true);
+    onRegisterCheck();
     if (timer.isActive) {
       timer.cancel();
     }
@@ -145,5 +185,16 @@ class RegisterController extends GetxController {
         }
       },
     );
+  }
+
+  void onRegister() {
+    logger.i(emailChecked.value);
+    logger.i(pwdChecked.value);
+    logger.i(pwdConfirmChecked.value);
+    logger.i(nickChecked.value);
+    logger.i(smsChecked.value);
+    logger.i(isAgree.value);
+  
+    //회원가입 api 수행 
   }
 }

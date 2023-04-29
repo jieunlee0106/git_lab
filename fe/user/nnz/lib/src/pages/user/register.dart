@@ -44,7 +44,6 @@ class Register extends StatelessWidget {
                 ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
                     onTap: controller.twitter,
@@ -64,18 +63,14 @@ class Register extends StatelessWidget {
                             icon: ImagePath.twitter,
                             size: 80,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Get.width * 0.2,
-                            ),
-                            child: const Text(
-                              "트위터로 시작하기",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
+                          const Text(
+                            "트위터로 시작하기",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
                             ),
                           ),
+                          Container(),
                         ],
                       ),
                     ),
@@ -106,17 +101,13 @@ class Register extends StatelessWidget {
                             icon: ImagePath.id,
                             size: 80,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Get.width * 0.2,
-                            ),
-                            child: const Text(
-                              "아이디로 시작하기",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                          const Text(
+                            "아이디로 시작하기",
+                            style: TextStyle(
+                              fontSize: 20,
                             ),
                           ),
+                          Container(),
                         ],
                       ),
                     ),
@@ -124,26 +115,31 @@ class Register extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("이미 가입하셨나요?"),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed("/login");
-                        },
-                        child: const Text(
-                          "로그인",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 48,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("이미 가입하셨나요?"),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/login");
+                          },
+                          child: const Text(
+                            "로그인",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),

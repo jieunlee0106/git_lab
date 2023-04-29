@@ -28,6 +28,41 @@ class UserProvider extends GetConnect {
     return null;
   }
 
+  //테스트 이메일 중복확인 api
+  void testApi({required String email}) {
+    logger.i("이메일 중복확인 해줘 $email");
+  }
+
+  //이메일 중복확인 api
+  Future<Response?> getValidateEmail({required String email}) async {
+    try {
+      final response = await get("https://$email", headers: headers);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
+  }
+
+  //닉네임 중복확인 api
+  Future<Response?> getVaildateNickname({required String nickname}) async {
+    try {
+      final response = await get("https://$nickname", headers: headers);
+      if (response.statusCode == 200) {
+        return response.body;
+      } else if (response.hasError) {
+        logger.e(response.statusCode);
+        logger.e(response.statusText);
+        logger.e(response.hasError);
+      }
+    } catch (e) {
+      logger.e(e);
+    }
+    return null;
+  }
+
   //회원가입 api
   Future<Response?> postRegister() async {
     final body = {
