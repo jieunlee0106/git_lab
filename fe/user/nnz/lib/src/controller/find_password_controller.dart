@@ -16,6 +16,9 @@ class FindPasswordController extends GetxController {
   RxBool phoneChekced = false.obs;
   RxBool isAuthChecked = false.obs;
   RxBool requestSms = false.obs;
+  RxBool pwdChecked = false.obs;
+  RxBool pwdConfirmChecked = false.obs;
+  RxBool findPwdChecked = false.obs;
   final RxInt totalCount = 120.obs;
   final RxString timeCount = "".obs;
   int seconds = 120;
@@ -77,6 +80,14 @@ class FindPasswordController extends GetxController {
     return '$duration'.substring(2, 7);
   }
 
+  void onTest() {
+    logger.i("들어왔냠? ${pwdChecked.value}");
+    logger.i("들어왔냠 확인? ${pwdConfirmChecked.value}");
+    findPwdChecked.value =
+        pwdChecked.value && pwdConfirmChecked.value ? true : false;
+    logger.i("너 뭔데 ${findPwdChecked.value}");
+  }
+
   void onTimer() {
     isTimerChecked = false;
     if (authNumberController.text.length >= 6) {
@@ -96,5 +107,11 @@ class FindPasswordController extends GetxController {
         timer.cancel();
       }
     });
+  }
+
+  void onFindPassword() {
+    logger.i("비밀번호 상태 ${pwdChecked.value}");
+    logger.i("비밀번호확인 상태 ${pwdConfirmChecked.value}");
+    logger.i("되냐? 상태 ${findPwdChecked.value}");
   }
 }

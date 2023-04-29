@@ -53,11 +53,12 @@ class _RegisterFieldState extends State<RegisterField> {
         if (widget.formType == 'email') {
           final isValidEmail = controller.onEmailValidate(text: value);
           controller.emailChecked.value = isValidEmail;
-          
         } else if (widget.formType == 'password') {
           final isValidPassword = controller.onPasswordValidate(text: value);
           controller.pwdChecked.value = isValidPassword;
-        
+          final isValidPasswordConfirm =
+              controller.passwordController.text == widget.controller.text;
+          controller.pwdConfirmChecked.value = isValidPasswordConfirm;
         } else if (widget.formType == 'passwordConfirm') {
           final isValidPasswordConfirm =
               controller.passwordController.text == widget.controller.text;
