@@ -1,31 +1,46 @@
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 //회원 관련 프로바이더 ex) login, register, findPassword
 class UserProvider extends GetConnect {
   final logger = Logger();
-  Map<String, String> headers = {
+  final headers = {
     'Content-Type': 'application',
   };
+
+  @override
+  void onInit() async {
+    //load env file
+    await dotenv.load();
+    //Set baseUrl from .env file
+    httpClient.baseUrl = dotenv.env['BASE_URL'];
+    httpClient.timeout = const Duration(microseconds: 5000);
+    super.onInit();
+  }
 
   //로그인 api 통신
   Future<Response?> postLogin(
       {required String email, required String password}) async {
     final body = {
       'email': email,
-      'password': password,
+      'pwd': password,
     };
     try {
-      final response = await post("https://", body, headers: headers);
+      final response = await post("/users/login", body, headers: headers);
       if (response.statusCode == 200) {
         return response.body;
       } else {
-        throw Exception('Failed to Login');
+        final errorMessage =
+            "Login Failed (${response.statusCode}): ${response.body}";
+        logger.e(errorMessage);
+        throw Exception(errorMessage);
       }
     } catch (e) {
-      logger.e(e);
+      final errorMessage = "Login Failed: $e";
+      logger.e(errorMessage);
+      throw Exception(errorMessage);
     }
-    return null;
   }
 
   //테스트 이메일 중복확인 api
