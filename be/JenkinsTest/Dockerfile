@@ -11,3 +11,6 @@ COPY ${JAR_FILE} ./app.jar
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Spring 프로파일 적용할 때
+# ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar"]
