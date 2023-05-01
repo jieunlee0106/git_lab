@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
 import '../components/message_popup.dart';
@@ -10,7 +11,8 @@ enum PageName { HOME, SERACH, UPLOAD, ACTIVITY, MYPAGE }
 class BottomNavController extends GetxController {
   RxInt navIndex = 0.obs;
   List<int> bottomHistory = [0];
-
+  final storage = const FlutterSecureStorage();
+  String? accessToken;
   void changeBottomNav(int value, {bool hasGesture = true}) {
     var page = PageName.values[value];
     print(page);
@@ -27,9 +29,24 @@ class BottomNavController extends GetxController {
     }
   }
 
+  @override
+  void onInit() async {
+    super.onInit();
+    // storage.deleteAll();
+    storage.write(key: "accessToken", value: "12131312313");
+    accessToken = await storage.read(key: "accessToken");
+    print("들어와 $accessToken");
+  }
+
+  Future<String?> getToken() async {
+    final accessToken = await storage.read(key: "accessToken");
+    return accessToken;
+  }
+
   void changeIndex(int value, {bool hasGesture = true}) {
     print(value);
     navIndex(value);
+
     if (bottomHistory.last != value) {
       bottomHistory.add(value);
     }

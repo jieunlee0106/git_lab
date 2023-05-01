@@ -18,13 +18,13 @@ class MyPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+          iconTheme: const IconThemeData(color: Colors.black),
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   onPressed: () => Navigator.of(context).pop(),
+          // ),
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
-          actions: [Icon(Icons.more_vert)],
+          actions: const [Icon(Icons.more_vert)],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -32,13 +32,13 @@ class MyPage extends StatelessWidget {
             child: Expanded(
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       MyProfile(),
                       MyFollower(),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GrayLine(),
@@ -71,7 +71,8 @@ class MyPage extends StatelessWidget {
                             child: Container(
                                 width: 135,
                                 height: 5,
-                                color: Color.fromARGB(255, 230, 230, 230)),
+                                color:
+                                    const Color.fromARGB(255, 230, 230, 230)),
                           ),
                         ],
                       ),
@@ -83,7 +84,7 @@ class MyPage extends StatelessWidget {
                     yet: '2',
                     ing: '1',
                     end: '4',
-                    page: MySharingList(),
+                    page: const MySharingList(),
                   ),
                   SharingInfo(
                     share: '나눔 받은 내역',
@@ -91,7 +92,7 @@ class MyPage extends StatelessWidget {
                     yet: '3',
                     ing: '2',
                     end: '6',
-                    page: MySharedList(),
+                    page: const MySharedList(),
                   ),
                 ],
               ),

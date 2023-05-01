@@ -17,20 +17,6 @@ class Register extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Container(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: const Text(
-                  "닫기",
-                  style: TextStyle(
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-            ),
-          ],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

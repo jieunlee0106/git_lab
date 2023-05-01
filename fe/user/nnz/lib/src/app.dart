@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nnz/src/pages/home/home.dart';
+import 'package:nnz/src/pages/user/mypage.dart';
 import 'package:nnz/src/pages/user/register.dart';
 
 import 'components/icon_data.dart';
@@ -8,13 +9,13 @@ import 'controller/bottom_nav_controller.dart';
 
 class App extends GetView<BottomNavController> {
   const App({super.key});
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: controller.willPopAction,
-        child: Obx(
-          () => Scaffold(
+        child: Obx(() {
+          final token = Get.find<BottomNavController>().accessToken;
+          return Scaffold(
             body: IndexedStack(
               index: controller.navIndex.value,
               children: [
@@ -39,11 +40,8 @@ class App extends GetView<BottomNavController> {
                   ),
                 ),
                 //mypage
-                Center(
-                  child: Container(
-                    child: Register(),
-                  ),
-                ),
+
+                token == null ? Register() : const MyPage(),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
@@ -104,7 +102,7 @@ class App extends GetView<BottomNavController> {
                     label: 'my page'),
               ],
             ),
-          ),
-        ));
+          );
+        }));
   }
 }

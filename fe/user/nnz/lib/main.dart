@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: "/",
-          page: () => const App(),
+          page: () => App(),
         ),
         GetPage(
           name: "/home",
