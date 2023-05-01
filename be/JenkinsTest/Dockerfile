@@ -7,11 +7,10 @@ RUN apt-get update && \
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # NOTE dpkg -i exits nonzero due to missing dependencies
-RUN dpkg -i google-chrome-stable_current_amd64.deb ; \
-    dpkg -l
-RUN apt-get update && \
-    apt-get -f install && \
-    apt-get clean
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get install -y -f
+#RUN apt-get update && \
+#    apt-get -f install && \
+#    apt-get clean
 
 RUN wget https://chromedriver.storage.googleapis.com/112.0.5615.49/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \
