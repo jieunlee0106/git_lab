@@ -9,14 +9,15 @@ class SharingDetailCard extends StatelessWidget {
       height: 100,
       child: Container(
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 239, 236, 236),
-            borderRadius: BorderRadius.circular(5),
-            boxShadow: [
-              BoxShadow(
-                  blurRadius: 5.0,
-                  offset: const Offset(0.7, 0.7),
-                  color: Colors.grey.withOpacity(0.7))
-            ]),
+          color: const Color.fromARGB(255, 239, 236, 236),
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 5.0,
+                offset: const Offset(0.7, 0.7),
+                color: Colors.grey.withOpacity(0.7)),
+          ],
+        ),
         child: const Row(
           children: [
             Padding(
