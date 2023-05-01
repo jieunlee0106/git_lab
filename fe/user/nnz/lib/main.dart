@@ -12,6 +12,12 @@ import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/share/sharing_detail.dart';
 import 'package:nnz/src/pages/share/my_shared_list.dart';
 import 'package:nnz/src/pages/share/my_sharing_list.dart';
+import 'package:nnz/src/pages/category/concert.dart';
+import 'package:nnz/src/pages/category/musical.dart';
+import 'package:nnz/src/pages/category/stage.dart';
+import 'package:nnz/src/pages/category/movie.dart';
+import 'package:nnz/src/pages/category/sports.dart';
+import 'package:nnz/src/pages/category/esports.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
@@ -110,6 +116,30 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/mySharingList",
           page: () => const MySharingList(),
+        ),
+        GetPage(
+          name: "/concertPage",
+          page: () => const ConcertPage(),
+        ),
+        GetPage(
+          name: "/musicalPage",
+          page: () => const MusicalPage(),
+        ),
+        GetPage(
+          name: "/stagePage",
+          page: () => const ConcertPage(),
+        ),
+        GetPage(
+          name: "/moviePage",
+          page: () => const ConcertPage(),
+        ),
+        GetPage(
+          name: "/sportsPage",
+          page: () => const ConcertPage(),
+        ),
+        GetPage(
+          name: "/esportsPage",
+          page: () => const ConcertPage(),
         ),
       ],
     );

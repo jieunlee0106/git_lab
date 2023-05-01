@@ -1,47 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:nnz/src/components/category/category_dropdown.dart';
+import 'package:nnz/src/components/my_page_form/share_list_info.dart';
+import 'package:nnz/src/config/config.dart';
+import 'package:nnz/src/components/icon_data.dart';
+import 'package:nnz/src/components/home_page_form/share_text.dart';
+import 'package:nnz/src/components/category/hot_style.dart';
+import 'package:nnz/src/components/category/hot_share_list.dart';
+import 'package:nnz/src/components/gray_line_form/gray_line.dart';
+import 'package:nnz/src/components/category/show_card.dart';
 
-class ConcertPage extends StatelessWidget {
-  const ConcertPage({super.key});
+class ConcertPage extends StatefulWidget {
+  const ConcertPage({Key? key}) : super(key: key);
+
+  @override
+  _ConcertPageState createState() => _ConcertPageState();
+}
+
+class _ConcertPageState extends State<ConcertPage> {
+  String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: CategoryDropdown(
+          items: <String>['콘서트', '뮤지컬', '연극', '영화', '스포트', 'e스포츠'],
+          cartegory: '콘서트',
+        ),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                // margin: const EdgeInsets.all(10),
-                // padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: List.generate(
-                    100,
-                    (index) => Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        "#해시태그$index",
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            HotShareText(
+                text: 'HOT한 콘서트',
+                image: ImagePath.fire,
+                smallText: '나눔 활동이 활발한 콘서트에요'),
+            HotShareList(),
+            GrayLine(),
+            ShowList(),
+          ],
         ),
       ),
     );
