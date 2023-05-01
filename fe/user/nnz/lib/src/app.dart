@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/user/mypage.dart';
-import 'package:nnz/src/pages/user/register.dart';
 
 import 'components/icon_data.dart';
 import 'controller/bottom_nav_controller.dart';
@@ -14,7 +13,6 @@ class App extends GetView<BottomNavController> {
     return WillPopScope(
         onWillPop: controller.willPopAction,
         child: Obx(() {
-          final token = Get.find<BottomNavController>().accessToken;
           return Scaffold(
             body: IndexedStack(
               index: controller.navIndex.value,
@@ -41,7 +39,7 @@ class App extends GetView<BottomNavController> {
                 ),
                 //mypage
 
-                token == null ? Register() : const MyPage(),
+                const MyPage(),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(

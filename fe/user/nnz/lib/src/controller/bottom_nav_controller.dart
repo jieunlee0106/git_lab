@@ -32,9 +32,9 @@ class BottomNavController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    // storage.deleteAll();
-    storage.write(key: "accessToken", value: "12131312313");
-    accessToken = await storage.read(key: "accessToken");
+    storage.deleteAll();
+    // storage.write(key: "accessToken", value: "12131312313");
+    // accessToken = await storage.read(key: "accessToken");
     print("들어와 $accessToken");
   }
 
@@ -45,11 +45,15 @@ class BottomNavController extends GetxController {
 
   void changeIndex(int value, {bool hasGesture = true}) {
     print(value);
-    navIndex(value);
-
+    if (accessToken == null && value == 4) {
+      Get.toNamed("/register");
+      return;
+    }
     if (bottomHistory.last != value) {
       bottomHistory.add(value);
     }
+    navIndex(value);
+
     print(bottomHistory);
   }
 

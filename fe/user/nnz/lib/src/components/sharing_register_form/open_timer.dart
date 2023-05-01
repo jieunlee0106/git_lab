@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/components/icon_data.dart';
 import 'package:nnz/src/controller/sharing_register_controller.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
 import '../../config/config.dart';
-import '../icon_data.dart';
 
 class OpenTime extends StatefulWidget {
-  const OpenTime({super.key});
+  const OpenTime({Key? key}) : super(key: key);
 
   @override
   State<OpenTime> createState() => _OpenTimeState();
@@ -58,15 +58,13 @@ class _OpenTimeState extends State<OpenTime> {
           ),
           Container(
             padding: const EdgeInsets.symmetric(
-              vertical: 10,
+              vertical: 12,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 12,
-                  ),
+                  width: Get.width * 0.45,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Config.blackColor,
@@ -75,50 +73,24 @@ class _OpenTimeState extends State<OpenTime> {
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
+                      horizontal: 16,
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          controller.openDate.value,
-                          style: const TextStyle(
-                            fontSize: 16,
+                        Expanded(
+                          child: TextField(
+                            controller: controller.openDateController,
+                            decoration: const InputDecoration(hintText: "오픈날짜"),
                           ),
                         ),
-                        MaterialButton(
-                          minWidth: 60,
-                          child: const Padding(
-                            padding: EdgeInsets.only(
-                              left: 32,
-                            ),
-                            child: Icon(
-                              Icons.calendar_today,
-                            ),
-                          ),
-                          onPressed: () async {
-                            DateTime? temp = await PlatformDatePicker.showDate(
-                              context: context,
-                              firstDate: DateTime(DateTime.now().year),
-                              initialDate: DateTime.now(),
-                              lastDate: DateTime(DateTime.now().year + 5),
-                            );
-                            if (temp != null) {
-                              setState(() {
-                                date = temp;
-                              });
-                            }
-                            final dateFormat = date.toString().substring(0, 10);
-                            controller.openDate(dateFormat);
-                          },
-                        ),
+                        const Icon(Icons.calendar_today),
                       ],
                     ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 12,
-                  ),
+                  width: Get.width * 0.4,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Config.blackColor,
@@ -129,43 +101,38 @@ class _OpenTimeState extends State<OpenTime> {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          controller.openTime.value,
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        MaterialButton(
-                          minWidth: 60,
-                          child: const Padding(
-                            padding: EdgeInsets.only(
-                              left: 16,
-                            ),
-                            child: Icon(
-                              Icons.timer,
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: controller.openTimeController,
+                              decoration:
+                                  const InputDecoration(hintText: "오픈시간"),
                             ),
                           ),
-                          onPressed: () async {
-                            TimeOfDay? temp = await PlatformDatePicker.showTime(
-                              use24hFormat: true,
-                              context: context,
-                              initialTime: time,
-                              showCupertino: true,
-                              showMaterial: true,
-                              height: 200,
-                            );
-                            setState(() {
-                              time = temp!;
-                            });
-                            final timeFormat =
-                                time.toString().substring(10, 15);
-                            controller.openTime(timeFormat);
-                          },
-                        ),
-                      ],
+                          GestureDetector(
+                              onTap: () async {
+                                TimeOfDay? temp =
+                                    await PlatformDatePicker.showTime(
+                                  context: context,
+                                  initialTime: time,
+                                  showCupertino: true,
+                                  use24hFormat: true,
+                                );
+                                if (temp != null) {
+                                  setState(() {
+                                    time = temp;
+                                  });
+                                }
+                                final timeFormat =
+                                    time.toString().substring(10, 15);
+                                controller.openTimeController.text = timeFormat;
+                              },
+                              child: const Icon(Icons.timer)),
+                        ],
+                      ),
                     ),
                   ),
                 )

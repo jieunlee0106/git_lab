@@ -18,13 +18,10 @@ class MyPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Colors.black),
-          // leading: IconButton(
-          //   icon: Icon(Icons.arrow_back),
-          //   onPressed: () => Navigator.of(context).pop(),
-          // ),
+          iconTheme: IconThemeData(color: Colors.black),
+      
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
-          actions: const [Icon(Icons.more_vert)],
+          actions: [Icon(Icons.more_vert)],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -32,13 +29,13 @@ class MyPage extends StatelessWidget {
             child: Expanded(
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     children: [
                       MyProfile(),
                       MyFollower(),
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 20,
                   ),
                   GrayLine(),
@@ -71,8 +68,7 @@ class MyPage extends StatelessWidget {
                             child: Container(
                                 width: 135,
                                 height: 5,
-                                color:
-                                    const Color.fromARGB(255, 230, 230, 230)),
+                                color: Color.fromARGB(255, 230, 230, 230)),
                           ),
                         ],
                       ),
@@ -84,7 +80,7 @@ class MyPage extends StatelessWidget {
                     yet: '2',
                     ing: '1',
                     end: '4',
-                    page: const MySharingList(),
+                    page: MySharingList(),
                   ),
                   SharingInfo(
                     share: '나눔 받은 내역',
@@ -92,7 +88,7 @@ class MyPage extends StatelessWidget {
                     yet: '3',
                     ing: '2',
                     end: '6',
-                    page: const MySharedList(),
+                    page: MySharedList(),
                   ),
                 ],
               ),
