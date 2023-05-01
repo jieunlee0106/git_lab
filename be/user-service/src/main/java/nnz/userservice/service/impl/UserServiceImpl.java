@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import nnz.userservice.dto.MessageDTO;
 import nnz.userservice.entity.VerifyNumber;
 import nnz.userservice.exception.ErrorCode;
+import nnz.userservice.repository.UserRepository;
 import nnz.userservice.repository.VerifyNumberRepository;
 import nnz.userservice.service.SmsSender;
 import nnz.userservice.service.UserService;
@@ -27,6 +28,7 @@ import java.util.Random;
 public class UserServiceImpl implements UserService {
 
     private final SmsSender smsSender;
+    private final UserRepository userRepository;
     private final VerifyNumberRepository verifyNumberRepository;
 
     @Override
@@ -67,6 +69,15 @@ public class UserServiceImpl implements UserService {
         log.info("input verifyNumber:{}, {}의 인증결과: {}", verifyNumber, phone, vn.isVerify());
 
         return vn.isVerify();
+    }
+
+    @Override
+    public boolean isExist(String type, String val) {
+        // 중복 -> return true
+        // TODO: QueryDSL 적용 후 한 쿼리문으로 처리
+        if ("email".equals(type)) {
+            return userRepository.existsByEmail(val);
+        } else return userRepository.existsByNickname(val);
     }
 
     private String createRandomNumber() {
