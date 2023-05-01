@@ -3,7 +3,9 @@ FROM openjdk:11-jdk-slim
 
 # Selenium 사용 위해 Chrome 및 Chrome WebDriver 설치
 RUN apt-get update && \
-    apt-get install -y wget unzip xvfb libxi6 libgconf-2-4 default-jdk libgbm-dev libnss3-1d libxss1 && \
+    apt-get install -y wget unzip xvfb libxi6 libgconf-2-4 default-jdk libgbm-dev && \
+    sudo apt-get update && \
+    apt-get install -y libnss3-1d libxss1
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     dpkg -i google-chrome-stable_current_amd64.deb && \
     wget https://chromedriver.storage.googleapis.com/112.0.5615.49/chromedriver_linux64.zip && \
