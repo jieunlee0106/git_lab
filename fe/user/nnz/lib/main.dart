@@ -12,6 +12,7 @@ import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/share/sharing_detail.dart';
 import 'package:nnz/src/pages/share/my_shared_list.dart';
 import 'package:nnz/src/pages/share/my_sharing_list.dart';
+import 'package:nnz/src/pages/share/sharing_perform.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
@@ -110,6 +111,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/mySharingList",
           page: () => const MySharingList(),
+        ),
+        GetPage(
+          name: "/performDetail",
+          page: () => SharePerfomDetail(),
         ),
       ],
     );
