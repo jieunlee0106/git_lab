@@ -103,6 +103,14 @@ class MyApp extends StatelessWidget {
           name: "/profileEdit",
           page: () => const ProfileEdit(),
         ),
+        GetPage(
+          name: "/mySharedList",
+          page: () => const MySharedList(),
+        ),
+        GetPage(
+          name: "/mySharingList",
+          page: () => const MySharingList(),
+        ),
       ],
     );
   }

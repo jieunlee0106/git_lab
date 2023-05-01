@@ -49,15 +49,15 @@ class MyPage extends StatelessWidget {
                         child: Row(
                           children: [
                             Image.asset(
-                              ImagePath.stage,
-                              width: 45,
+                              ImagePath.esports,
+                              width: 30,
                             ),
                             Text(
-                              '나의 나눔',
+                              '  나의 나눔',
                               style: TextStyle(
                                 color: Config.blackColor,
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
                               ),
                             )
                           ],
@@ -67,9 +67,9 @@ class MyPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding: const EdgeInsets.only(left: 15, top: 10),
                             child: Container(
-                                width: 160,
+                                width: 135,
                                 height: 5,
                                 color: Color.fromARGB(255, 230, 230, 230)),
                           ),

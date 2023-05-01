@@ -10,4 +10,5 @@ class Config {
   static Color hintTextColor = const Color(0xffB8B8B8);
   static Color yellowColor = const Color(0xffFFE277);
   static Color rigthYellowColor = const Color(0xffFFF7CE);
+  static Color grayFontColor = Color.fromARGB(255, 69, 69, 69);
 }
