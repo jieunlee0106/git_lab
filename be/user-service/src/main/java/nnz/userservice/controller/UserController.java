@@ -6,9 +6,7 @@ import nnz.userservice.service.UserService;
 import nnz.userservice.vo.CheckVerifyVO;
 import nnz.userservice.vo.VerifyVO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
@@ -38,4 +36,11 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/users/check")
+    public ResponseEntity<Map<String, Boolean>> duplicateCheck(@RequestParam("type") String type,
+                                                              @RequestParam("val") String val) {
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("available", !userService.isExist(type, val)); // 존재하면 사용 불가능이므로 not 연산하여 응답
+        return ResponseEntity.ok(response);
+    }
 }
