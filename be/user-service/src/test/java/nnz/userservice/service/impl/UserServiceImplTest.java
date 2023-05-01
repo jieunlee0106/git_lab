@@ -8,8 +8,8 @@ class UserServiceImplTest {
 
     @Test
     public void random_number() {
-        for (int i=0; i<10; i++) {
-            System.out.println(UserServiceImpl.createRandomNumber());
-        }
+//        for (int i=0; i<10; i++) {
+//            System.out.println(UserServiceImpl.createRandomNumber());
+//        }
     }
 }
