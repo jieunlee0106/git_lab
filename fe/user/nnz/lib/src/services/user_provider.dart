@@ -20,8 +20,10 @@ class UserProvider extends GetConnect {
   }
 
   //로그인 api 통신
-  Future<Response?> postLogin(
-      {required String email, required String password}) async {
+  Future<Response?> postLogin({
+    required String email,
+    required String password,
+  }) async {
     final body = {
       'email': email,
       'pwd': password,
@@ -43,8 +45,10 @@ class UserProvider extends GetConnect {
   }
 
   //이메일 및 닉네임 중복확인 코드 중복이므로 type와 value를 가져와 쿼리스트링으로 get 검색
-  Future<Response?> getValidate(
-      {required String type, required String value}) async {
+  Future<Response?> getValidate({
+    required String type,
+    required String value,
+  }) async {
     try {
       final response = await get("/users/check?$type&$value", headers: headers);
       //응답코드가 200이면 닉네임이나 이메일 사용가능
@@ -74,7 +78,9 @@ class UserProvider extends GetConnect {
   }
 
   //이메일 중복확인 api
-  Future<Response?> getValidateEmail({required String email}) async {
+  Future<Response?> getValidateEmail({
+    required String email,
+  }) async {
     try {
       final response = await get("/$email", headers: headers);
       if (response.statusCode == 200) {
@@ -87,7 +93,9 @@ class UserProvider extends GetConnect {
   }
 
   //닉네임 중복확인 api
-  Future<Response?> getVaildateNickname({required String nickname}) async {
+  Future<Response?> getVaildateNickname({
+    required String nickname,
+  }) async {
     try {
       final response = await get("https://$nickname", headers: headers);
       if (response.statusCode == 200) {
@@ -103,10 +111,10 @@ class UserProvider extends GetConnect {
     return null;
   }
 
-  //회원가입 api
-
   //본인인증 요청 api
-  Future<Response?> postReqVerify({required String phone}) async {
+  Future<Response?> postReqVerify({
+    required String phone,
+  }) async {
     final body = {
       'phone': phone,
     };
@@ -127,8 +135,10 @@ class UserProvider extends GetConnect {
   }
 
   //본인인증 확인 api
-  Future<Response?> postResVerify(
-      {required String phone, required String verifyNum}) async {
+  Future<Response?> postResVerify({
+    required String phone,
+    required String verifyNum,
+  }) async {
     final body = {
       'phone': phone,
       'verify': verifyNum,
@@ -149,22 +159,34 @@ class UserProvider extends GetConnect {
     }
   }
 
-  Future<Response?> postRegister() async {
+  //회원가입 api
+  Future<Response?> postRegister({
+    required String email,
+    required String pwd,
+    required String confrimPwd,
+    required String nickname,
+    required String phone,
+  }) async {
     final body = {
-      'email': '',
-      'password': '',
-      'passwordConfirm': '',
-      'nickname': '',
-      'phone': '',
+      'email': email,
+      'pwd': pwd,
+      'confirmPwd': confrimPwd,
+      'nickname': nickname,
+      'phone': phone,
     };
     try {
-      final response = await post("https://", body, headers: headers);
-      if (response.statusCode == 200) {
+      final response = await post("/users/join", body, headers: headers);
+      if (response.statusCode == 201) {
         return response.body;
+      } else {
+        final errorMessage = "(${response.statusCode}): ${response.body}";
+        logger.e(errorMessage);
+        throw Exception(errorMessage);
       }
     } catch (e) {
-      logger.e(e);
+      final errorMessage = "$e";
+      logger.e(errorMessage);
+      throw Exception(errorMessage);
     }
-    return null;
   }
 }
