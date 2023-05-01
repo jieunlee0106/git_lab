@@ -2,7 +2,7 @@
 FROM openjdk:11-jdk-slim
 
 # JAR_FILE 변수에 jar 파일을 등록
-ARG JAR_FILE=/build/libs/*.jar
+ARG JAR_FILE=/build/libs/JenkinsTest-0.0.1-SNAPSHOT.jar
 
 # build 된 jar 파일을 container 내부에 복사
 # 젠킨스 도커 -> 스프링 도커
