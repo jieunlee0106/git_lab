@@ -18,6 +18,10 @@ public class VerifyNumber {
     private String phone;
     private Integer verifyNumber;
     private boolean isVerify;
+
+    public void verify() {
+        this.isVerify = true;
+    }
 }
 
 

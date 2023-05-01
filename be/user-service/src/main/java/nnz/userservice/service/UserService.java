@@ -10,4 +10,5 @@ import java.security.NoSuchAlgorithmException;
 public interface UserService {
 
     void sendVerifySms(String to) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException;
+    boolean verify(String phone, int verifyNumber);
 }

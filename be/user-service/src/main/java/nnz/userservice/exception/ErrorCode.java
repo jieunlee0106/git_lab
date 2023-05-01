@@ -8,7 +8,9 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RequiredArgsConstructor
 public enum ErrorCode implements AbstractErrorCode {
-    USER_NOT_FOUND("U001", "존재하지 않는 사용자", NOT_FOUND), ;
+
+    NOT_FOUND_VERIFY("U006", "존재하지 않는 인증정보입니다.", NOT_FOUND),
+    ;
 
     private final String code;
     private final String message;
