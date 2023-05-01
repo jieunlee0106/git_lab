@@ -64,7 +64,8 @@ class Nickname extends GetView<RegisterController> {
                 GestureDetector(
                   onTap: () {
                     if (controller.nicknameChecked.value) {
-                      logger.i("중복확인 해주세요");
+                      controller.onNicknameValidate(
+                          nickname: controller.nicknameController.text);
                     }
                   },
                   child: Container(

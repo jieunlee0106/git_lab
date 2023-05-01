@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 import '../../config/config.dart';
 import '../../controller/register_controller.dart';
@@ -29,28 +30,11 @@ class RegisterField extends StatefulWidget {
 }
 
 class _RegisterFieldState extends State<RegisterField> {
-  final FocusNode _focusNode = FocusNode();
   final controller = Get.put(RegisterController());
+  final logger = Logger();
   bool isEmail = false;
   bool isPassword = false;
   bool isPasswordConfirm = false;
-  bool _hasFocus = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(() {
-      setState(() {
-        _hasFocus = _focusNode.hasFocus;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _focusNode.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,30 +44,53 @@ class _RegisterFieldState extends State<RegisterField> {
       keyboardType: widget.type,
       obscureText: widget.observer ?? false,
       onChanged: (value) {
-        Get.find<RegisterController>().onChangeFiled(
+        final controller = Get.find<RegisterController>();
+        controller.onChangeFiled(
           controller: widget.controller,
           text: value,
         );
-        // controller.test(value);
+
+        if (widget.formType == 'email') {
+          final isValidEmail = controller.onEmailValidate(text: value);
+          controller.emailChecked.value = isValidEmail;
+        } else if (widget.formType == 'password') {
+          final isValidPassword = controller.onPasswordValidate(text: value);
+          controller.pwdChecked.value = isValidPassword;
+          final isValidPasswordConfirm =
+              controller.passwordController.text == widget.controller.text;
+          controller.pwdConfirmChecked.value = isValidPasswordConfirm;
+        } else if (widget.formType == 'passwordConfirm') {
+          final isValidPasswordConfirm =
+              controller.passwordController.text == widget.controller.text;
+          controller.pwdConfirmChecked.value = isValidPasswordConfirm;
+        }
+
+        controller.onRegisterCheck();
       },
       validator: (value) {
-        print(widget.formType);
         if (widget.formType == 'email') {
           isEmail = controller.onEmailValidate(text: value!);
+          if (isEmail == true) {
+            controller.emailValidate();
+          }
+
           return isEmail ? null : "올바른 이메일 형식 입력해주세요";
         } else if (widget.formType == 'password') {
           isPassword = controller.onPasswordValidate(text: value!);
+          controller.pwdChecked.value = isPassword == true ? true : false;
+
           return isPassword ? null : "숫자, 문자, 특수문자 포함 8자 이상";
         } else if (widget.formType == 'passwordConfirm') {
           isPasswordConfirm =
               controller.passwordController.text == widget.controller.text
                   ? true
                   : false;
+          controller.pwdConfirmChecked.value = isPasswordConfirm ? true : false;
+
           return isPasswordConfirm ? null : "비밀번호가 일치하지 않습니다.";
         }
         return null;
       },
-      focusNode: _focusNode,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
@@ -100,9 +107,7 @@ class _RegisterFieldState extends State<RegisterField> {
             ? GestureDetector(
                 onTap: () {
                   widget.observer = !widget.observer!;
-                  setState(
-                    () {},
-                  );
+                  setState(() {});
                 },
                 child: Icon(
                   widget.observer! ? Icons.visibility : Icons.visibility_off,

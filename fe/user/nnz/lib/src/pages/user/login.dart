@@ -31,7 +31,6 @@ class Login extends StatelessWidget {
         body: Form(
           key: controller.loginKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: SingleChildScrollView(
@@ -116,9 +115,9 @@ class Login extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: Get.width * 0.15,
-                          ),
+                          // SizedBox(
+                          //   height: Get.width * 0.15,
+                          // ),
                           GestureDetector(
                             onTap: () {
                               if (controller.isChecked.value) {
@@ -130,31 +129,28 @@ class Login extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                 vertical: 24,
                               ),
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  margin: const EdgeInsets.only(
-                                    top: 32,
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 16,
-                                  ),
-                                  width: Get.width,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    color: controller.isChecked.value
-                                        ? Config.yellowColor
-                                        : Config.greyColor,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "로그인",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: controller.isChecked.value
-                                            ? Config.blackColor
-                                            : Colors.white,
-                                      ),
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                  top: 32,
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                width: Get.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: controller.isChecked.value
+                                      ? Config.yellowColor
+                                      : Config.greyColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "로그인",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: controller.isChecked.value
+                                          ? Config.blackColor
+                                          : Colors.white,
                                     ),
                                   ),
                                 ),
