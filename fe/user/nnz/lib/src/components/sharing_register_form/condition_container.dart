@@ -69,6 +69,7 @@ class ConditionContainer extends StatelessWidget {
                         onTap: () {
                           controller.addCondition(
                               controller.conditionController.text);
+                          controller.conditionController.text = "";
                         },
                         child: Container(
                           decoration: BoxDecoration(

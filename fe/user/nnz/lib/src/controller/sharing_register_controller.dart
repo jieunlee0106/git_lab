@@ -80,7 +80,7 @@ class SharingRegisterController extends GetxController {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    // FocusScope.of(context).unfocus();
+                    FocusScope.of(context).unfocus();
                   },
                   child: const Text("확인"),
                 ),
@@ -88,8 +88,29 @@ class SharingRegisterController extends GetxController {
             );
           });
     } else {
-      conList.add(condition);
-      logger.i(conList);
+      if (conditionController.text == "") {
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return AlertDialog(
+                content: const Text("조건을 입력해주세요"),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      FocusScope.of(context).unfocus();
+                    },
+                    child: const Text("확인"),
+                  ),
+                ],
+              );
+            });
+      } else {
+        conList.add(condition);
+
+        conditionController.text = "";
+        logger.i(conList);
+      }
     }
   }
 
@@ -134,7 +155,7 @@ class SharingRegisterController extends GetxController {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    // FocusScope.of(context).unfocus();
+                    FocusScope.of(context).unfocus();
                   },
                   child: const Text("확인"),
                 ),
@@ -151,7 +172,7 @@ class SharingRegisterController extends GetxController {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    // FocusScope.of(context).unfocus();
+                    FocusScope.of(context).unfocus();
                   },
                   child: const Text("확인"),
                 ),

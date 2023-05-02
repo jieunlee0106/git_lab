@@ -43,7 +43,7 @@ class _SharingChoiceState extends State<SharingChoice> {
               const Padding(
                 padding: EdgeInsets.only(bottom: 4.0),
                 child: Text(
-                  "나눔 선택",
+                  "공연 선택",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
