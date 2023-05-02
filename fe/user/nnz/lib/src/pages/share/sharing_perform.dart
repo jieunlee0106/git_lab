@@ -67,13 +67,16 @@ class SharePerfomDetail extends StatelessWidget {
                                 ),
                                 PerformDetail(
                                     performTitle: "난지 한강공원",
-                                    iconName: Icons.room),
+                                    iconName: Icons.room,
+                                    textSize: 16),
                                 PerformDetail(
                                     performTitle: "2023.05.27",
-                                    iconName: Icons.calendar_month),
+                                    iconName: Icons.calendar_month,
+                                    textSize: 16),
                                 PerformDetail(
                                     performTitle: "전체관람가",
-                                    iconName: Icons.person),
+                                    iconName: Icons.person,
+                                    textSize: 16),
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -167,7 +170,7 @@ class SharePerfomDetail extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
