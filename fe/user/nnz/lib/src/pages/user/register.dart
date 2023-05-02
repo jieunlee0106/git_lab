@@ -17,6 +17,14 @@ class Register extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.offNamed("/app");
+              },
+              child: const Text("닫기"),
+            )
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

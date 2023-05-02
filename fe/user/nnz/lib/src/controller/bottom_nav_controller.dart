@@ -25,11 +25,12 @@ class BottomNavController extends GetxController {
         accessToken = await getToken();
         if (accessToken == null) {
           print(accessToken);
-          Get.toNamed("/register");
-          return;
+          Get.offNamed("/register");
+          // return;
+        } else {
+          Get.toNamed("/sharingRegister");
         }
-        curIndex(page.index);
-        Get.toNamed("/sharingRegister");
+        // Get.toNamed("/sharingRegister");
         break;
       case PageName.HOME:
       case PageName.SERACH:
@@ -41,7 +42,7 @@ class BottomNavController extends GetxController {
         accessToken = await getToken();
         if (accessToken == null) {
           print(accessToken);
-          Get.toNamed("/register");
+          Get.offNamed("/register");
           return;
         }
         changeIndex(value);
@@ -72,17 +73,6 @@ class BottomNavController extends GetxController {
   }
 
   void changeIndex(int value, {bool hasGesture = true}) {
-    // if (value == 4) {
-    //   if (accessToken == null) {
-    //     print(accessToken);
-    //     Get.toNamed("/register");
-    //     return;
-    //   } else {
-    //     if (bottomHistory.last != value) {
-    //       bottomHistory.add(value);
-    //     }
-    //   }
-    // }
     if (bottomHistory.last != value) {
       bottomHistory.add(value);
     }

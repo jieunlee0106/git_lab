@@ -70,8 +70,27 @@ class SharingRegisterController extends GetxController {
   }
 
   void addCondition(String condition) {
-    conList.add(condition);
-    logger.i(conList);
+    if (conList.isNotEmpty) {
+      showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return AlertDialog(
+              content: const Text("조건은 하나만 추가할 수 있습니다."),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    // FocusScope.of(context).unfocus();
+                  },
+                  child: const Text("확인"),
+                ),
+              ],
+            );
+          });
+    } else {
+      conList.add(condition);
+      logger.i(conList);
+    }
   }
 
   void removeCondition(String condition) {
@@ -115,7 +134,7 @@ class SharingRegisterController extends GetxController {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    FocusScope.of(context).unfocus();
+                    // FocusScope.of(context).unfocus();
                   },
                   child: const Text("확인"),
                 ),
@@ -132,7 +151,7 @@ class SharingRegisterController extends GetxController {
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
-                    FocusScope.of(context).unfocus();
+                    // FocusScope.of(context).unfocus();
                   },
                   child: const Text("확인"),
                 ),

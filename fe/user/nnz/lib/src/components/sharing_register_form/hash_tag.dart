@@ -119,7 +119,6 @@ class HashTag extends StatelessWidget {
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
-                                    FocusScope.of(context).unfocus();
                                   },
                                   child: const Text("확인"),
                                 ),

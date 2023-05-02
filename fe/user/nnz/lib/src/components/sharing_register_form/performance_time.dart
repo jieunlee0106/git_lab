@@ -16,7 +16,17 @@ class PerformanceTime extends StatefulWidget {
 class _PerformanceTimeState extends State<PerformanceTime> {
   DateTime date = DateTime.now();
   final controller = Get.put(SharingRegisterController());
+  FocusNode? performStartFocusNode;
+  FocusNode? performEndFocusNode;
   final logger = Logger();
+
+  @override
+  void initState() {
+    super.initState();
+    performStartFocusNode = FocusNode();
+    performEndFocusNode = FocusNode();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,6 +90,7 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                       children: [
                         Expanded(
                           child: TextField(
+                            focusNode: performStartFocusNode,
                             controller: controller.performStartController,
                             decoration: const InputDecoration(
                               hintText: "공연 시작일",
@@ -88,25 +99,25 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                           ),
                         ),
                         GestureDetector(
-                            onTap: () async {
-                              DateTime? temp =
-                                  await PlatformDatePicker.showDate(
-                                context: context,
-                                firstDate: DateTime(DateTime.now().year),
-                                initialDate: date,
-                                lastDate: DateTime(DateTime.now().year + 5),
-                              );
-                              if (temp != null) {
-                                setState(() {
-                                  date = temp;
-                                });
-                              }
-                              final dateFormat =
-                                  date.toString().substring(0, 10);
-                              controller.performStartController.text =
-                                  dateFormat;
-                            },
-                            child: const Icon(Icons.calendar_today)),
+                          onTap: () async {
+                            DateTime? temp = await PlatformDatePicker.showDate(
+                              context: context,
+                              firstDate: DateTime(DateTime.now().year),
+                              initialDate: date,
+                              lastDate: DateTime(DateTime.now().year + 5),
+                            );
+                            if (temp != null) {
+                              setState(() {
+                                date = temp;
+                              });
+                            }
+                            final dateFormat = date.toString().substring(0, 10);
+                            controller.performStartController.text = dateFormat;
+                          },
+                          child: const Icon(
+                            Icons.calendar_today,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -128,6 +139,7 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                       children: [
                         Expanded(
                           child: TextField(
+                            focusNode: performEndFocusNode,
                             controller: controller.performEndController,
                             decoration: const InputDecoration(
                               hintText: "공연 종료일",
