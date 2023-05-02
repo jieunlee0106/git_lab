@@ -189,4 +189,30 @@ class UserProvider extends GetConnect {
       throw Exception(errorMessage);
     }
   }
+
+  //비밀번호 변경 api
+  Future<Response> patchPwd(
+      {required String phone,
+      required String pwd,
+      required String confirmPwd}) async {
+    final body = {
+      "phone": phone,
+      "pwd": pwd,
+      "confirmPwd": confirmPwd,
+    };
+    try {
+      final response = await patch("/users/find-pwd", body);
+      if (response.statusCode == 204) {
+        return response;
+      } else {
+        final errorMessage = "(${response.statusCode}): ${response.body}";
+        logger.e(errorMessage);
+        throw Exception(errorMessage);
+      }
+    } catch (e) {
+      final errorMessage = "$e";
+      logger.e(errorMessage);
+      throw Exception(errorMessage);
+    }
+  }
 }
