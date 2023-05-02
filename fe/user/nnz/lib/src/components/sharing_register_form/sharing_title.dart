@@ -5,7 +5,7 @@ import '../../controller/sharing_register_controller.dart';
 import '../icon_data.dart';
 
 class SharingTitle extends StatelessWidget {
-  SharingTitle({super.key});
+  SharingTitle({Key? key}) : super(key: key);
   final controller = Get.put(SharingRegisterController());
   @override
   Widget build(BuildContext context) {

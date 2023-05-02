@@ -37,12 +37,6 @@ class _SharingRegisterState extends State<SharingRegister> {
   }
 
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {

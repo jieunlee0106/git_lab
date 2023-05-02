@@ -48,6 +48,7 @@ class _ShareAlertState extends State<ShareAlert> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: DropdownButton<String>(
+                      underline: Container(),
                       isDense: true,
                       padding: const EdgeInsetsDirectional.symmetric(
                         horizontal: 16,
@@ -183,6 +184,7 @@ class _ShareAlertState extends State<ShareAlert> {
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: DropdownButton<String>(
+                                      underline: Container(),
                                       isDense: true,
                                       padding:
                                           const EdgeInsetsDirectional.symmetric(
@@ -271,6 +273,7 @@ class _ShareAlertState extends State<ShareAlert> {
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: DropdownButton<String>(
+                                      underline: Container(),
                                       isDense: true,
                                       padding:
                                           const EdgeInsetsDirectional.symmetric(
