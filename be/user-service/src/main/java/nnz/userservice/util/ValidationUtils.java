@@ -42,4 +42,18 @@ public class ValidationUtils {
 
         return true;
     }
+
+    /**
+     * 비밀번호 형식 검사
+     * - 최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함
+     */
+    public static boolean isValidPwd(String input) {
+        // 최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함
+        Pattern p1 = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$^!%*#?&]{8,}$");
+        if (!p1.matcher(input).matches()) {
+            return false;
+        }
+
+        return true;
+    }
 }
