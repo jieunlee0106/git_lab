@@ -93,17 +93,18 @@ class _OpenTimeState extends State<OpenTime> {
                                   await PlatformDatePicker.showDate(
                                 context: context,
                                 firstDate: DateTime(DateTime.now().year),
-                                initialDate: date,
+                                initialDate: DateTime.now(),
                                 lastDate: DateTime(DateTime.now().year + 5),
+                                locale: const Locale('ko', 'KR'),
                               );
                               if (temp != null) {
                                 setState(() {
                                   date = temp;
                                 });
+                                final dateFormat =
+                                    date.toString().substring(0, 10);
+                                controller.openDateController.text = dateFormat;
                               }
-                              final dateFormat =
-                                  date.toString().substring(0, 10);
-                              controller.openDateController.text = dateFormat;
                             },
                             child: const Icon(Icons.calendar_today)),
                       ],

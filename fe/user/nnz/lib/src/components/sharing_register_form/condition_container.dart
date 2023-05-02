@@ -62,6 +62,7 @@ class ConditionContainer extends StatelessWidget {
                           controller: controller.conditionController,
                           decoration: const InputDecoration(
                             hintText: "조건을 입력해주세요",
+                            border: InputBorder.none,
                           ),
                         ),
                       ),

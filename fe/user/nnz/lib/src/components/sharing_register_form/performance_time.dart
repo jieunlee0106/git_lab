@@ -14,7 +14,7 @@ class PerformanceTime extends StatefulWidget {
 }
 
 class _PerformanceTimeState extends State<PerformanceTime> {
-  DateTime date = DateTime.now();
+  DateTime? date;
   final controller = Get.put(SharingRegisterController());
   FocusNode? performStartFocusNode;
   FocusNode? performEndFocusNode;
@@ -103,16 +103,19 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                             DateTime? temp = await PlatformDatePicker.showDate(
                               context: context,
                               firstDate: DateTime(DateTime.now().year),
-                              initialDate: date,
+                              initialDate: DateTime.now(),
                               lastDate: DateTime(DateTime.now().year + 5),
+                              locale: const Locale('ko', 'KR'),
                             );
                             if (temp != null) {
                               setState(() {
                                 date = temp;
                               });
+                              final dateFormat =
+                                  date.toString().substring(0, 10);
+                              controller.performStartController.text =
+                                  dateFormat;
                             }
-                            final dateFormat = date.toString().substring(0, 10);
-                            controller.performStartController.text = dateFormat;
                           },
                           child: const Icon(
                             Icons.calendar_today,
@@ -155,15 +158,17 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                                 firstDate: DateTime(DateTime.now().year),
                                 initialDate: DateTime.now(),
                                 lastDate: DateTime(DateTime.now().year + 5),
+                                locale: const Locale('ko', 'KR'),
                               );
                               if (temp != null) {
                                 setState(() {
                                   date = temp;
                                 });
+                                final dateFormat =
+                                    date.toString().substring(0, 10);
+                                controller.performEndController.text =
+                                    dateFormat;
                               }
-                              final dateFormat =
-                                  date.toString().substring(0, 10);
-                              controller.performEndController.text = dateFormat;
                             },
                             child: const Icon(Icons.calendar_today)),
                       ],

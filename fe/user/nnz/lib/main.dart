@@ -17,6 +17,8 @@ import 'package:nnz/src/pages/share/sharing_perform.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   Get.config(
@@ -44,6 +46,15 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
       ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'EN'),
+        Locale('ko', 'KR'),
+      ],
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
       initialRoute: "/",
