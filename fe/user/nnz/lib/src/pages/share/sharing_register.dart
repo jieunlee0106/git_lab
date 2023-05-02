@@ -32,6 +32,7 @@ class _SharingRegisterState extends State<SharingRegister> {
       setState(() {
         token = value;
       });
+      print(token);
     });
   }
 

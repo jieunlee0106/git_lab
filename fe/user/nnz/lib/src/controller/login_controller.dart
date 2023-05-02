@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:nnz/src/services/user_provider.dart';
+import 'package:nnz/src/controller/bottom_nav_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get to => Get.find();
-
+  final storage = const FlutterSecureStorage();
   RxBool visiblePassword = true.obs;
   RxBool isChecked = false.obs;
   final logger = Logger();
@@ -55,10 +56,17 @@ class LoginController extends GetxController {
         },
       );
     } else {
-      logger.i("로그인진행하겠습니다.");
-      final response = UserProvider().postLogin(
-          email: emailController.text, password: passwordController.text);
-      logger.i(response);
+      logger.i("로그인진행하겠습니다. ${Get.find<BottomNavController>().curIndex.value}");
+      // final response = UserProvider().postLogin(
+      //     email: emailController.text, password: passwordController.text);
+      // logger.i(response);
+      Get.find<BottomNavController>().setToken(accessToken: "123123123");
+
+      final token = Get.find<BottomNavController>().getToken();
+      Get.offNamed("/app");
+      Get.find<BottomNavController>()
+          .changeBottomNav(Get.find<BottomNavController>().curIndex.value);
+      logger.i(token.toString());
     }
   }
 
