@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nnz/src/components/category/category_dropdown.dart';
-import 'package:nnz/src/components/my_page_form/share_list_info.dart';
-import 'package:nnz/src/config/config.dart';
 import 'package:nnz/src/components/icon_data.dart';
-import 'package:nnz/src/components/home_page_form/share_text.dart';
 import 'package:nnz/src/components/category/hot_style.dart';
 import 'package:nnz/src/components/category/hot_share_list.dart';
 import 'package:nnz/src/components/gray_line_form/gray_line.dart';
-import 'package:nnz/src/components/category/show_card.dart';
+import 'package:nnz/src/components/category/show_list.dart';
 
 class ConcertPage extends StatefulWidget {
   const ConcertPage({Key? key}) : super(key: key);

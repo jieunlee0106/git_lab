@@ -17,12 +17,14 @@ class _MoviePageState extends State<MoviePage> {
       appBar: AppBar(
         title: CategoryDropdown(
           items: <String>['콘서트', '뮤지컬', '연극', '영화', '스포트', 'e스포츠'],
-          cartegory: '뮤지컬',
+          cartegory: '영화',
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: const Text("musical 페이지"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }

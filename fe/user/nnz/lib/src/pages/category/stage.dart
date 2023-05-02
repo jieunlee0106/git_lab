@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nnz/src/components/category/category_dropdown.dart';
+import 'package:nnz/src/components/icon_data.dart';
+import 'package:nnz/src/components/category/hot_style.dart';
+import 'package:nnz/src/components/category/hot_share_list.dart';
+import 'package:nnz/src/components/gray_line_form/gray_line.dart';
+import 'package:nnz/src/components/category/show_list.dart';
 
 class StagePage extends StatefulWidget {
   const StagePage({Key? key}) : super(key: key);
@@ -17,12 +22,22 @@ class _StagePageState extends State<StagePage> {
       appBar: AppBar(
         title: CategoryDropdown(
           items: <String>['콘서트', '뮤지컬', '연극', '영화', '스포츠', 'e스포츠'],
-          cartegory: '뮤지컬',
+          cartegory: '연극',
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: const Text("musical 페이지"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HotShareText(
+                text: 'HOT한 연극',
+                image: ImagePath.fire,
+                smallText: '나눔 활동이 활발한 연극이에요'),
+            HotShareList(),
+            GrayLine(),
+            ShowList(),
+          ],
+        ),
       ),
     );
   }
