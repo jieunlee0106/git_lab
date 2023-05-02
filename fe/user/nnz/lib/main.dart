@@ -25,7 +25,6 @@ import 'package:nnz/src/pages/share/sharing_perform.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -65,11 +64,7 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-<<<<<<< HEAD
       initialRoute: "/",
-=======
-      initialRoute: "/myShareDetail",
->>>>>>> shareauth
       getPages: [
         GetPage(
           name: "/",

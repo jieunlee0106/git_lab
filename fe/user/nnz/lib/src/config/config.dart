@@ -9,6 +9,8 @@ class Config {
   static Color greyColor = const Color(0xffCFD4DA);
   static Color hintTextColor = const Color(0xffB8B8B8);
   static Color yellowColor = const Color(0xffFFE277);
+
+  static Color deepYellowColor = const Color(0xffF3C906);
   static Color rigthYellowColor = const Color(0xffFFF7CE);
-  static Color grayFontColor = Color.fromARGB(255, 69, 69, 69);
+  static Color grayFontColor = const Color.fromARGB(255, 69, 69, 69);
 }

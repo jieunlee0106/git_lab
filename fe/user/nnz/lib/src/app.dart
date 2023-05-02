@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nnz/src/pages/home/home.dart';
+import 'package:nnz/src/pages/search/search.dart';
 import 'package:nnz/src/pages/user/mypage.dart';
 
 import 'components/icon_data.dart';
@@ -20,11 +21,7 @@ class App extends GetView<BottomNavController> {
                 //home
                 const Home(),
                 //search
-                Center(
-                  child: Container(
-                    child: const Text("Search Page"),
-                  ),
-                ),
+                Search(),
                 //upload
                 Center(
                   child: Container(
