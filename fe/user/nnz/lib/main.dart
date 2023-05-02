@@ -46,11 +46,11 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/performDetail",
+      initialRoute: "/",
       getPages: [
         GetPage(
           name: "/",
-          page: () => App(),
+          page: () => const App(),
         ),
         GetPage(
           name: "/home",
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/sharingRegister",
-          page: () => SharingRegister(),
+          page: () => const SharingRegister(),
           transition: Transition.native,
         ),
         GetPage(

@@ -38,7 +38,6 @@ class App extends GetView<BottomNavController> {
                   ),
                 ),
                 //mypage
-<<<<<<< HEAD
                 Navigator(
                   key: controller.mypageKey,
                   onGenerateRoute: (routeSetting) {
@@ -46,10 +45,6 @@ class App extends GetView<BottomNavController> {
                         builder: (context) => const MyPage());
                   },
                 ),
-=======
-
-                const MyPage(),
->>>>>>> storage
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(

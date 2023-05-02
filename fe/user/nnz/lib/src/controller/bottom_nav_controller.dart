@@ -22,6 +22,13 @@ class BottomNavController extends GetxController {
     switch (page) {
       case PageName.UPLOAD:
         curIndex(page.index);
+        accessToken = await getToken();
+        if (accessToken == null) {
+          print(accessToken);
+          Get.toNamed("/register");
+          return;
+        }
+        curIndex(page.index);
         Get.toNamed("/sharingRegister");
         break;
       case PageName.HOME:

@@ -33,7 +33,8 @@ class SharingRegisterController extends GetxController {
 
   RxInt peopleCount = 0.obs;
   final logger = Logger();
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
+
   @override
   void onInit() {
     super.onInit();

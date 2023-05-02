@@ -93,7 +93,7 @@ class _PerformanceTimeState extends State<PerformanceTime> {
                                   await PlatformDatePicker.showDate(
                                 context: context,
                                 firstDate: DateTime(DateTime.now().year),
-                                initialDate: DateTime.now(),
+                                initialDate: date,
                                 lastDate: DateTime(DateTime.now().year + 5),
                               );
                               if (temp != null) {
