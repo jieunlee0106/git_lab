@@ -6,6 +6,7 @@ import 'package:nnz/src/controller/list_scroll_controller.dart';
 
 import 'package:nnz/src/components/sharing_detail/sharing_tag.dart';
 import 'package:nnz/src/config/config.dart';
+import 'package:nnz/src/pages/share/sharing_detail.dart';
 
 class SharePerfomDetail extends StatelessWidget {
   SharePerfomDetail({super.key});
@@ -120,42 +121,49 @@ class SharePerfomDetail extends StatelessWidget {
           ),
           Expanded(
             child: Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: GridView.builder(
-                  controller: scrollControlloer.scrollController.value,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1,
-                  ),
-                  itemBuilder: (_, index) {
-                    if (index < scrollControlloer.data.length) {
-                      var datum = scrollControlloer.data[index];
+              () => SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: GridView.builder(
+                    controller: scrollControlloer.scrollController.value,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1,
+                    ),
+                    itemBuilder: (_, index) {
+                      if (index < scrollControlloer.data.length) {
+                        var datum = scrollControlloer.data[index];
 
-                      return Padding(
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap: () => Get.to(() => SharingDetail()),
+                            child: ShareCard(datum: datum),
+                          ),
+                        );
+                      }
+                      if (scrollControlloer.hasMore.value ||
+                          scrollControlloer.isLoading.value) {
+                        return const Center(child: RefreshProgressIndicator());
+                      }
+                      return Container(
                         padding: const EdgeInsets.all(10.0),
-                        child: ShareCard(datum: datum),
-                      );
-                    }
-                    if (scrollControlloer.hasMore.value ||
-                        scrollControlloer.isLoading.value) {
-                      return const Center(child: RefreshProgressIndicator());
-                    }
-                    return Container(
-                      padding: const EdgeInsets.all(10.0),
-                      child: const Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("더이상 나눔이"),
-                            Text("존재하지 않습니다"),
-                          ],
+                        child: const Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("더이상 나눔이"),
+                              Text("존재하지 않습니다"),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  itemCount: scrollControlloer.data.length + 1,
+                      );
+                    },
+                    itemCount: scrollControlloer.data.length + 1,
+                  ),
                 ),
               ),
             ),
