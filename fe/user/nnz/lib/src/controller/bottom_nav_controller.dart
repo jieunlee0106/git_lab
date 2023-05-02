@@ -10,6 +10,7 @@ enum PageName { HOME, SERACH, UPLOAD, ACTIVITY, MYPAGE }
 class BottomNavController extends GetxController {
   RxInt navIndex = 0.obs;
   List<int> bottomHistory = [0];
+  GlobalKey<NavigatorState> mypageKey = GlobalKey<NavigatorState>();
 
   void changeBottomNav(int value, {bool hasGesture = true}) {
     var page = PageName.values[value];

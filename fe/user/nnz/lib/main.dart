@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nnz/src/bindings/init_bindings.dart';
+import 'package:nnz/src/pages/share/my_shared_detail.dart';
 import 'package:nnz/src/pages/share/sharing_register.dart';
 import 'package:nnz/src/pages/user/find_password.dart';
 import 'package:nnz/src/pages/user/login.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: InitBindings(),
-      initialRoute: "/",
+      initialRoute: "/performDetail",
       getPages: [
         GetPage(
           name: "/",
@@ -116,6 +117,10 @@ class MyApp extends StatelessWidget {
           name: "/performDetail",
           page: () => SharePerfomDetail(),
         ),
+        GetPage(
+          name: "/myShareDetail",
+          page: () => const MySharedDetail(),
+        )
       ],
     );
   }

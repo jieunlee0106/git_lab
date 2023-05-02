@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nnz/src/pages/home/home.dart';
-import 'package:nnz/src/pages/user/register.dart';
+import 'package:nnz/src/pages/user/mypage.dart';
 
 import 'components/icon_data.dart';
 import 'controller/bottom_nav_controller.dart';
@@ -39,10 +39,12 @@ class App extends GetView<BottomNavController> {
                   ),
                 ),
                 //mypage
-                Center(
-                  child: Container(
-                    child: Register(),
-                  ),
+                Navigator(
+                  key: controller.mypageKey,
+                  onGenerateRoute: (routeSetting) {
+                    return MaterialPageRoute(
+                        builder: (context) => const MyPage());
+                  },
                 ),
               ],
             ),

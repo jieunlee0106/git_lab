@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:nnz/src/components/my_page_form/share_list_info.dart';
 import 'package:nnz/src/config/config.dart';
 import 'package:nnz/src/components/icon_data.dart';
-import 'package:nnz/src/components/my_page_form/share_list_info.dart';
 
 class MySharingList extends StatelessWidget {
   const MySharingList({super.key});
@@ -13,19 +11,19 @@ class MySharingList extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -35,7 +33,7 @@ class MySharingList extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(

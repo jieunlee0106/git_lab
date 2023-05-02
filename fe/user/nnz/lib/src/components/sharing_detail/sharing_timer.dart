@@ -8,7 +8,8 @@ class SharingDateTimer extends StatefulWidget {
   final VoidCallback onTimerFinished;
 
   const SharingDateTimer(
-      {super.key, required this.duration, required this.onTimerFinished});
+      {Key? key, required this.duration, required this.onTimerFinished})
+      : super(key: key);
 
   @override
   _SharingDateTimerState createState() => _SharingDateTimerState();
@@ -16,12 +17,13 @@ class SharingDateTimer extends StatefulWidget {
 
 class _SharingDateTimerState extends State<SharingDateTimer> {
   late Duration _remainingTime;
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
     _remainingTime = widget.duration;
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _remainingTime = _remainingTime - const Duration(seconds: 1);
         if (_remainingTime.inSeconds <= 0) {
@@ -30,6 +32,12 @@ class _SharingDateTimerState extends State<SharingDateTimer> {
         }
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override

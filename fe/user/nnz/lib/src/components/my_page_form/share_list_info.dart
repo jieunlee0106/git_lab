@@ -80,10 +80,10 @@ class ShareList extends StatelessWidget {
                 width: 345,
                 height: 150,
                 margin: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -125,7 +125,7 @@ class ShareList extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 12,
                                   ),
                                   Visibility(
@@ -151,7 +151,7 @@ class ShareList extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Center(
@@ -165,7 +165,7 @@ class ShareList extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 7),
+                              const SizedBox(height: 7),
                               Text(
                                 item['date']!,
                                 style: TextStyle(
@@ -176,7 +176,7 @@ class ShareList extends StatelessWidget {
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 7),
+                              const SizedBox(height: 7),
                               Text(
                                 item['location']!,
                                 style: TextStyle(
@@ -192,7 +192,7 @@ class ShareList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Container(
