@@ -11,6 +11,7 @@ import nnz.userservice.entity.VerifyNumber;
 import nnz.userservice.exception.ErrorCode;
 import nnz.userservice.repository.UserRepository;
 import nnz.userservice.repository.VerifyNumberRepository;
+import nnz.userservice.service.KafkaProducer;
 import nnz.userservice.service.SmsSender;
 import nnz.userservice.service.UserService;
 import nnz.userservice.util.ValidationUtils;
@@ -35,10 +36,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final VerifyNumberRepository verifyNumberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final KafkaProducer kafkaProducer;
 
     @Override
     @Transactional
-    public UserDTO join(UserJoinVO vo) throws UnsupportedEncodingException {
+    public UserDTO join(UserJoinVO vo) throws UnsupportedEncodingException, JsonProcessingException {
         // 본인인증이 확인되었는지 체크
         VerifyNumber vn = verifyNumberRepository.findById(vo.getPhone())
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_VERIFY));
@@ -88,7 +90,12 @@ public class UserServiceImpl implements UserService {
         newUser = userRepository.save(newUser);
         log.info("새로운 유저 가입: {}", newUser);
 
-        return UserDTO.of(newUser);
+        UserDTO userDTO = UserDTO.of(newUser);
+
+        // kafka에 가입한 사용자에 대한 메시지 발생
+        kafkaProducer.sendMessage(userDTO);
+
+        return userDTO;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/users/join")
-    public ResponseEntity<Void> join(@RequestBody UserJoinVO vo) throws UnsupportedEncodingException {
+    public ResponseEntity<Void> join(@RequestBody UserJoinVO vo) throws UnsupportedEncodingException, JsonProcessingException {
         userService.join(vo);
         return ResponseEntity.noContent().build();
     }

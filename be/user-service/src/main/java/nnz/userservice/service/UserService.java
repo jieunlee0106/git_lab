@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 
 public interface UserService {
 
-    UserDTO join(UserJoinVO vo) throws UnsupportedEncodingException;
+    UserDTO join(UserJoinVO vo) throws UnsupportedEncodingException, JsonProcessingException;
     void sendVerifySms(String to) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException;
     boolean verify(String phone, int verifyNumber);
     boolean isExistByEmail(String email);

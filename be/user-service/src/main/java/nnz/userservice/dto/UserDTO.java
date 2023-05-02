@@ -1,5 +1,9 @@
 package nnz.userservice.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.*;
 import nnz.userservice.entity.User;
 
@@ -17,7 +21,15 @@ public class UserDTO {
     private String phone;
     private String profileImage;
     private User.AuthProvider authProvider;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime lastLoginAt;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime updatedAt;
+
 
     public static UserDTO of(User user) {
         UserDTO dto = new UserDTO();
@@ -27,6 +39,7 @@ public class UserDTO {
         dto.profileImage = user.getProfileImage();
         dto.authProvider = user.getAuthProvider();
         dto.lastLoginAt = user.getLastLoginAt();
+        dto.updatedAt = user.getUpdatedAt();
         return dto;
     }
 }
