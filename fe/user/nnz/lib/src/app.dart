@@ -8,13 +8,12 @@ import 'controller/bottom_nav_controller.dart';
 
 class App extends GetView<BottomNavController> {
   const App({super.key});
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: controller.willPopAction,
-        child: Obx(
-          () => Scaffold(
+        child: Obx(() {
+          return Scaffold(
             body: IndexedStack(
               index: controller.navIndex.value,
               children: [
@@ -39,6 +38,7 @@ class App extends GetView<BottomNavController> {
                   ),
                 ),
                 //mypage
+<<<<<<< HEAD
                 Navigator(
                   key: controller.mypageKey,
                   onGenerateRoute: (routeSetting) {
@@ -46,6 +46,10 @@ class App extends GetView<BottomNavController> {
                         builder: (context) => const MyPage());
                   },
                 ),
+=======
+
+                const MyPage(),
+>>>>>>> storage
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
@@ -106,7 +110,7 @@ class App extends GetView<BottomNavController> {
                     label: 'my page'),
               ],
             ),
-          ),
-        ));
+          );
+        }));
   }
 }

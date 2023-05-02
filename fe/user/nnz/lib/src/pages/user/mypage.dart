@@ -19,10 +19,7 @@ class MyPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+      
           title: Center(child: Image.asset(ImagePath.logo, width: 80)),
           actions: [Icon(Icons.more_vert)],
         ),

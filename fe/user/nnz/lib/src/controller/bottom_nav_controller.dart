@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
 import '../components/message_popup.dart';
@@ -9,31 +10,77 @@ enum PageName { HOME, SERACH, UPLOAD, ACTIVITY, MYPAGE }
 
 class BottomNavController extends GetxController {
   RxInt navIndex = 0.obs;
+  RxInt curIndex = 0.obs;
   List<int> bottomHistory = [0];
   GlobalKey<NavigatorState> mypageKey = GlobalKey<NavigatorState>();
+  final storage = const FlutterSecureStorage();
+  String? accessToken;
 
-  void changeBottomNav(int value, {bool hasGesture = true}) {
+  void changeBottomNav(int value, {bool hasGesture = true}) async {
     var page = PageName.values[value];
     print(page);
     switch (page) {
       case PageName.UPLOAD:
+        curIndex(page.index);
         Get.toNamed("/sharingRegister");
         break;
       case PageName.HOME:
       case PageName.SERACH:
       case PageName.ACTIVITY:
+        changeIndex(value);
+        break;
       case PageName.MYPAGE:
+        curIndex(page.index);
+        accessToken = await getToken();
+        if (accessToken == null) {
+          print(accessToken);
+          Get.toNamed("/register");
+          return;
+        }
         changeIndex(value);
         break;
     }
   }
 
+  @override
+  void onInit() async {
+    super.onInit();
+    storage.deleteAll();
+    // storage.write(key: "accessToken", value: "12131312313");
+    // accessToken = await storage.read(key: "accessToken");
+    print("들어와 $accessToken");
+  }
+
+  Future<String?> getToken() async {
+    final accessToken = await storage.read(key: "accessToken");
+    if (accessToken == null) {
+      return null;
+    }
+    return accessToken;
+  }
+
+  Future<void> setToken({required String accessToken}) async {
+    await storage.write(key: "accessToken", value: accessToken);
+    return;
+  }
+
   void changeIndex(int value, {bool hasGesture = true}) {
-    print(value);
-    navIndex(value);
+    // if (value == 4) {
+    //   if (accessToken == null) {
+    //     print(accessToken);
+    //     Get.toNamed("/register");
+    //     return;
+    //   } else {
+    //     if (bottomHistory.last != value) {
+    //       bottomHistory.add(value);
+    //     }
+    //   }
+    // }
     if (bottomHistory.last != value) {
       bottomHistory.add(value);
     }
+    navIndex(value);
+
     print(bottomHistory);
   }
 

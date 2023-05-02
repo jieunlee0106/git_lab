@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
@@ -19,24 +20,25 @@ class SharingRegisterController extends GetxController {
   late final movieController;
   late final conditionController;
   late final hashTagController;
-  late final performController;
+  late final performStartController;
+  late final performEndController;
+  late final openDateController;
+  late final openTimeController;
   List<ImageFile> imageList = [];
   RxList<String> conList = RxList<String>();
   RxList<String> tagList = RxList<String>();
-  RxString performDate = "공연날짜 선택해주세요".obs;
-  RxString openDate = "yyyy-mm-dd".obs;
-  RxString openTime = "hh:mm".obs;
   RxString testText = "".obs;
 
   RxBool isAuthentication = false.obs;
 
   RxInt peopleCount = 0.obs;
   final logger = Logger();
+  final storage = FlutterSecureStorage();
   @override
   void onInit() {
     super.onInit();
     imageController = MultiImagePickerController(
-        maxImages: 5,
+        maxImages: 4,
         withReadStream: true,
         allowedImageTypes: ['png', 'jpg', 'jpeg']);
     titleController = TextEditingController();
@@ -50,7 +52,15 @@ class SharingRegisterController extends GetxController {
     movieController = TextEditingController();
     conditionController = TextEditingController();
     hashTagController = TextEditingController();
-    performController = TextEditingController();
+    performStartController = TextEditingController();
+    performEndController = TextEditingController();
+    openDateController = TextEditingController();
+    openTimeController = TextEditingController();
+  }
+
+  Future<String> getToken() async {
+    final accessToken = await storage.read(key: 'accessToken');
+    return accessToken!;
   }
 
   void onChange(String text) {
@@ -122,7 +132,7 @@ class SharingRegisterController extends GetxController {
               ],
             );
           });
-    } else if (performController.text.length <= 0) {
+    } else if (performStartController.text.length <= 0) {
       showDialog(
           context: Get.context!,
           builder: (context) {

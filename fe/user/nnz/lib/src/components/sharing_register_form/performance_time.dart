@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/components/icon_data.dart';
+import 'package:nnz/src/config/config.dart';
 import 'package:nnz/src/controller/sharing_register_controller.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
-import '../../config/config.dart';
-import '../icon_data.dart';
-
 class PerformanceTime extends StatefulWidget {
-  const PerformanceTime({super.key});
+  const PerformanceTime({Key? key}) : super(key: key);
 
   @override
-  State<PerformanceTime> createState() => _PerformanceTimeState();
+  _PerformanceTimeState createState() => _PerformanceTimeState();
 }
 
 class _PerformanceTimeState extends State<PerformanceTime> {
@@ -61,53 +60,103 @@ class _PerformanceTimeState extends State<PerformanceTime> {
             margin: const EdgeInsets.symmetric(
               vertical: 12,
             ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Config.blackColor,
-              ),
-              borderRadius: BorderRadius.circular(16),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 16,
+                  width: Get.width * 0.45,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Config.blackColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  width: Get.width * 0.6,
-                  child: TextField(
-                    controller: controller.performController,
-                    decoration: const InputDecoration(
-                      hintText: "공연날짜를 선택해주세요",
-                      border: InputBorder.none,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: controller.performStartController,
+                            decoration: const InputDecoration(
+                              hintText: "공연 시작일",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                            onTap: () async {
+                              DateTime? temp =
+                                  await PlatformDatePicker.showDate(
+                                context: context,
+                                firstDate: DateTime(DateTime.now().year),
+                                initialDate: DateTime.now(),
+                                lastDate: DateTime(DateTime.now().year + 5),
+                              );
+                              if (temp != null) {
+                                setState(() {
+                                  date = temp;
+                                });
+                              }
+                              final dateFormat =
+                                  date.toString().substring(0, 10);
+                              controller.performStartController.text =
+                                  dateFormat;
+                            },
+                            child: const Icon(Icons.calendar_today)),
+                      ],
                     ),
                   ),
-                  // Text(
-                  //   controller.performDate.value,
-                  //   style: const TextStyle(
-                  //     fontSize: 16,
-                  //   ),
-                  // ),
                 ),
-                MaterialButton(
-                  child: const Icon(
-                    Icons.calendar_today,
+                Container(
+                  width: Get.width * 0.4,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Config.blackColor,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  onPressed: () async {
-                    DateTime? temp = await PlatformDatePicker.showDate(
-                      context: context,
-                      firstDate: DateTime(DateTime.now().year),
-                      initialDate: DateTime.now(),
-                      lastDate: DateTime(DateTime.now().year + 5),
-                    );
-                    if (temp != null) {
-                      setState(() {
-                        date = temp;
-                        final dateFormat = date.toString().substring(0, 10);
-                        controller.performController.text = dateFormat;
-                      });
-                    }
-                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: controller.performEndController,
+                            decoration: const InputDecoration(
+                              hintText: "공연 종료일",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                            onTap: () async {
+                              DateTime? temp =
+                                  await PlatformDatePicker.showDate(
+                                context: context,
+                                firstDate: DateTime(DateTime.now().year),
+                                initialDate: DateTime.now(),
+                                lastDate: DateTime(DateTime.now().year + 5),
+                              );
+                              if (temp != null) {
+                                setState(() {
+                                  date = temp;
+                                });
+                              }
+                              final dateFormat =
+                                  date.toString().substring(0, 10);
+                              controller.performEndController.text = dateFormat;
+                            },
+                            child: const Icon(Icons.calendar_today)),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
