@@ -53,6 +53,7 @@ class DetailInfo extends StatelessWidget {
               // textAlign: TextAlign.center,
               decoration: const InputDecoration(
                 hintText: "내용을 입력해주세요",
+                enabledBorder: InputBorder.none,
                 alignLabelWithHint: true,
               ),
             ),

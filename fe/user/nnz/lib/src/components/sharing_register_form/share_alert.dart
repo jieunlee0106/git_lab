@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:nnz/src/components/sharing_register_form/category/esports.dart';
+import 'package:nnz/src/components/sharing_register_form/category/movies.dart';
+import 'package:nnz/src/components/sharing_register_form/category/musical.dart';
+import 'package:nnz/src/components/sharing_register_form/category/sports.dart';
+import 'package:nnz/src/components/sharing_register_form/category/theator.dart';
 
 import '../../config/config.dart';
 import '../../controller/sharing_register_controller.dart';
+import 'category/concert.dart';
 
 class ShareAlert extends StatefulWidget {
   const ShareAlert({super.key});
@@ -90,258 +96,13 @@ class _ShareAlertState extends State<ShareAlert> {
                       }).toList(),
                     ),
                   ),
-                  _selectedItem == '콘서트'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                prefixIcon: Icon(Icons.search),
-                              ),
-                              controller: controller.concertController,
-                              onChanged: (value) {
-                                logger.i(controller.sportsController.text);
-                                controller.testText(value);
-                              },
-                            ),
-                          ],
-                        )
-                      : Container(),
-                  _selectedItem == '뮤지컬'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                prefixIcon: Icon(Icons.search),
-                              ),
-                              controller: controller.musicalController,
-                              onChanged: (value) {
-                                logger.i(controller.sportsController.text);
-                                controller.testText(value);
-                              },
-                            ),
-                          ],
-                        )
-                      : Container(),
-                  _selectedItem == '연극'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                prefixIcon: Icon(Icons.search),
-                              ),
-                              controller: controller.theaterController,
-                              onChanged: (value) {
-                                logger.i(controller.sportsController.text);
-                                controller.testText(value);
-                              },
-                            ),
-                          ],
-                        )
-                      : Container(),
-                  _selectedItem == '영화'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                prefixIcon: Icon(Icons.search),
-                              ),
-                              controller: controller.movieController,
-                              onChanged: (value) {
-                                logger.i(controller.sportsController.text);
-                                controller.testText(value);
-                              },
-                            ),
-                          ],
-                        )
-                      : Container(),
-                  _selectedItem == '스포츠'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 4,
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffF3F3F3),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: DropdownButton<String>(
-                                      underline: Container(),
-                                      isDense: true,
-                                      padding:
-                                          const EdgeInsetsDirectional.symmetric(
-                                        horizontal: 16,
-                                        vertical: 12,
-                                      ),
-                                      icon: Padding(
-                                        padding: EdgeInsets.only(
-                                          left: Get.width * 0.287,
-                                        ),
-                                        child: const Icon(
-                                          Icons.keyboard_arrow_down,
-                                        ),
-                                      ),
-                                      hint: const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 4,
-                                        ),
-                                        child: Text(
-                                          "스포츠 카테고리",
-                                        ),
-                                      ),
-                                      alignment: Alignment.center,
-                                      value: _selectedSports,
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          _selectedSports = newValue;
-                                        });
-                                      },
-                                      items: _sportsItems.map((item) {
-                                        return DropdownMenuItem(
-                                          value: item,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                              right: 72,
-                                            ),
-                                            child: Text(item),
-                                          ),
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ),
-                                  _selectedSports != null
-                                      ? Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            //검색을 하는 api가 있어야 됨
-                                            TextField(
-                                              decoration: const InputDecoration(
-                                                prefixIcon: Icon(Icons.search),
-                                              ),
-                                              controller:
-                                                  controller.sportsController,
-                                              onChanged: (value) {
-                                                logger.i(controller
-                                                    .sportsController.text);
-                                                controller.testText(value);
-                                              },
-                                            ),
-                                          ],
-                                        )
-                                      : Container(),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
-                      : Container(),
+                  _selectedItem == '콘서트' ? ConcertCategory() : Container(),
+                  _selectedItem == '뮤지컬' ? MusicalCategory() : Container(),
+                  _selectedItem == '연극' ? TheatorCategory() : Container(),
+                  _selectedItem == '영화' ? MovieCategory() : Container(),
+                  _selectedItem == '스포츠' ? const SportsCategory() : Container(),
                   _selectedItem == 'e스포츠'
-                      ? Column(
-                          children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 4,
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffF3F3F3),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: DropdownButton<String>(
-                                      underline: Container(),
-                                      isDense: true,
-                                      padding:
-                                          const EdgeInsetsDirectional.symmetric(
-                                        horizontal: 16,
-                                        vertical: 12,
-                                      ),
-                                      icon: Padding(
-                                        padding: EdgeInsets.only(
-                                          left: Get.width * 0.18,
-                                        ),
-                                        child: const Icon(
-                                          Icons.keyboard_arrow_down,
-                                        ),
-                                      ),
-                                      hint: const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            // horizontal: 4,
-                                            ),
-                                        child: Text(
-                                          "e스포츠 카테고리",
-                                        ),
-                                      ),
-                                      value: _selectedeSports,
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          _selectedeSports = newValue;
-                                        });
-                                      },
-                                      items: _esportsItems.map((item) {
-                                        return DropdownMenuItem(
-                                          value: item,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                              right: 72,
-                                            ),
-                                            child: Text(item),
-                                          ),
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ),
-                                  _selectedSports != null
-                                      ? Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            //검색을 하는 api가 있어야 됨
-                                            TextField(
-                                              decoration: const InputDecoration(
-                                                prefixIcon: Icon(Icons.search),
-                                              ),
-                                              controller:
-                                                  controller.sportsController,
-                                              onChanged: (value) {
-                                                logger.i(controller
-                                                    .sportsController.text);
-                                                controller.testText(value);
-                                              },
-                                            ),
-                                          ],
-                                        )
-                                      : Container(),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
+                      ? const EsportsCategory()
                       : Container(),
                 ],
               ),

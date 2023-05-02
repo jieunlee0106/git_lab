@@ -52,6 +52,7 @@ class SharingTitle extends StatelessWidget {
               // textAlign: TextAlign.center,
               decoration: const InputDecoration(
                 hintText: "제목을 입력해주세요",
+                enabledBorder: InputBorder.none,
                 alignLabelWithHint: true,
               ),
             ),

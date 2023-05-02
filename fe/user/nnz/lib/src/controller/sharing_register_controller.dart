@@ -96,6 +96,12 @@ class SharingRegisterController extends GetxController {
   void onRemoveTag(int index) {
     tagList.remove(tagList[index]);
   }
+  //카테고리 조회
+
+  //공연 카테고리 별 검색
+  void onSearchShow(
+      {required TextEditingController textController,
+      required String category}) {}
 
   void onShareRegister() {
     if (imageController.images.length == 0) {

@@ -81,10 +81,31 @@ class _OpenTimeState extends State<OpenTime> {
                         Expanded(
                           child: TextField(
                             controller: controller.openDateController,
-                            decoration: const InputDecoration(hintText: "오픈날짜"),
+                            decoration: const InputDecoration(
+                              hintText: "오픈날짜",
+                              enabledBorder: InputBorder.none,
+                            ),
                           ),
                         ),
-                        const Icon(Icons.calendar_today),
+                        GestureDetector(
+                            onTap: () async {
+                              DateTime? temp =
+                                  await PlatformDatePicker.showDate(
+                                context: context,
+                                firstDate: DateTime(DateTime.now().year),
+                                initialDate: date,
+                                lastDate: DateTime(DateTime.now().year + 5),
+                              );
+                              if (temp != null) {
+                                setState(() {
+                                  date = temp;
+                                });
+                              }
+                              final dateFormat =
+                                  date.toString().substring(0, 10);
+                              controller.openDateController.text = dateFormat;
+                            },
+                            child: const Icon(Icons.calendar_today)),
                       ],
                     ),
                   ),
@@ -108,8 +129,10 @@ class _OpenTimeState extends State<OpenTime> {
                           Expanded(
                             child: TextField(
                               controller: controller.openTimeController,
-                              decoration:
-                                  const InputDecoration(hintText: "오픈시간"),
+                              decoration: const InputDecoration(
+                                hintText: "오픈시간",
+                                enabledBorder: InputBorder.none,
+                              ),
                             ),
                           ),
                           GestureDetector(

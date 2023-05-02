@@ -101,6 +101,7 @@ class HashTag extends StatelessWidget {
                       controller: controller.hashTagController,
                       decoration: const InputDecoration(
                         hintText: "#해시태그 입력해주세요",
+                        enabledBorder: InputBorder.none,
                       ),
                     ),
                   ),

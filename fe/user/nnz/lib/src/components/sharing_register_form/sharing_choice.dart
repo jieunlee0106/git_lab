@@ -67,6 +67,7 @@ class _SharingChoiceState extends State<SharingChoice> {
                     controller: controller.sharingController,
                     decoration: const InputDecoration(
                         hintText: '조회 버튼을 눌러 공연을 선택해주세요',
+                        enabledBorder: InputBorder.none,
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 8,
                         )),
