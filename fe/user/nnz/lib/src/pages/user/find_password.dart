@@ -24,8 +24,7 @@ class FindPassword extends StatelessWidget {
             vertical: 12,
           ),
           child: ListView(
-            // 수정된 부분
-            shrinkWrap: true, // 추가된 속성
+            shrinkWrap: true,
             children: [
               Form(
                 key: controller.formKey,
@@ -60,9 +59,8 @@ class FindPassword extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 12), // 추가된 SizedBox 위젯
-              const FindPasswordBtn(),
-              const SizedBox(height: 12), // 추가된 SizedBox 위젯
+              const SizedBox(height: 24),
+              FindPasswordBtn(),
             ],
           ),
         ),

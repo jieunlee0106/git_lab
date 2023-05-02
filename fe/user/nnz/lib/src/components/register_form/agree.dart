@@ -20,7 +20,10 @@ class Agree extends GetView<RegisterController> {
               Checkbox(
                 activeColor: Config.blackColor,
                 value: controller.isAgree.value,
-                onChanged: (value) => controller.isAgree(value),
+                onChanged: (value) {
+                  controller.isAgree(value);
+                  controller.onRegisterCheck();
+                },
               ),
               const Padding(
                 padding: EdgeInsets.only(bottom: 3.0),

@@ -33,9 +33,22 @@ class _NewPasswordState extends State<NewPassword> {
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: TextFormField(
             controller: controller.passwordController,
-            onChanged: (value) {},
+            onChanged: (value) {
+              final isValidPassword =
+                  controller.onPasswordValidate(text: value);
+              print("도대체 왜 $isValidPassword");
+              controller.pwdChecked.value = isValidPassword;
+
+              controller.pwdConfirmChecked.value =
+                  controller.passwordController.text ==
+                          controller.passwordConfirmController.text
+                      ? true
+                      : false;
+              controller.onTest();
+            },
             validator: (value) {
               isPassword = controller.onPasswordValidate(text: value!);
+              controller.pwdChecked.value = isPassword == true ? true : false;
 
               return isPassword ? null : "숫자, 문자, 특수문자 포함 8자 이상 입력해주세요";
             },
@@ -81,7 +94,12 @@ class _NewPasswordState extends State<NewPassword> {
           child: TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.passwordConfirmController,
-            onChanged: (value) {},
+            onChanged: (value) {
+              final isValidPwdConfirm = controller.passwordController.text ==
+                  controller.passwordConfirmController.text;
+              controller.pwdConfirmChecked.value = isValidPwdConfirm;
+              controller.onTest();
+            },
             validator: (text) {
               Logger().i(controller.passwordController.text ==
                   controller.passwordConfirmController.text);
@@ -89,6 +107,9 @@ class _NewPasswordState extends State<NewPassword> {
                       controller.passwordConfirmController.text
                   ? true
                   : false;
+              controller.pwdConfirmChecked.value =
+                  isPasswordConfirm ? true : false;
+
               return isPasswordConfirm ? null : "비밀번호가 일치하지 않습니다.";
             },
             keyboardType: TextInputType.name,

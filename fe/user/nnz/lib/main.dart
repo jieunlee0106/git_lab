@@ -12,12 +12,15 @@ import 'package:nnz/src/pages/home/home.dart';
 import 'package:nnz/src/pages/share/sharing_detail.dart';
 import 'package:nnz/src/pages/share/my_shared_list.dart';
 import 'package:nnz/src/pages/share/my_sharing_list.dart';
+
 import 'package:nnz/src/pages/category/concert.dart';
 import 'package:nnz/src/pages/category/musical.dart';
 import 'package:nnz/src/pages/category/stage.dart';
 import 'package:nnz/src/pages/category/movie.dart';
 import 'package:nnz/src/pages/category/sports.dart';
 import 'package:nnz/src/pages/category/esports.dart';
+
+import 'package:nnz/src/pages/share/sharing_perform.dart';
 
 import 'src/app.dart';
 import 'src/config/config.dart';
